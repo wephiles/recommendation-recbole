@@ -1,0 +1,701 @@
+Thu 11 Jan 2024 17:35:29 INFO  ['run.py', '--dataset=ml-100k', '--model=BPR', '--learning_rate=0.0001', '--embedding_size=128']
+Thu 11 Jan 2024 17:35:29 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\AllProjects\PycharmProjects\recommendationAlgorithms\.venv\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.0001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 128
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.GENERAL
+MODEL_INPUT_TYPE = InputType.PAIRWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Thu 11 Jan 2024 17:35:30 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+Thu 11 Jan 2024 17:35:30 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+Thu 11 Jan 2024 17:35:30 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Thu 11 Jan 2024 17:35:30 INFO  BPR(
+  (user_embedding): Embedding(944, 128)
+  (item_embedding): Embedding(1683, 128)
+  (loss): BPRLoss()
+)
+Trainable parameters: 336256
+Thu 11 Jan 2024 17:35:30 INFO  FLOPs: 256.0
+Thu 11 Jan 2024 17:35:31 INFO  epoch 0 training [time: 0.35s, train loss: 27.7254]
+Thu 11 Jan 2024 17:35:31 INFO  epoch 0 evaluating [time: 0.23s, valid_score: 0.019400]
+Thu 11 Jan 2024 17:35:31 INFO  valid result: 
+recall@10 : 0.005    mrr@10 : 0.0194    ndcg@10 : 0.0074    hit@10 : 0.0604    precision@10 : 0.0064
+Thu 11 Jan 2024 17:35:31 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:31 INFO  epoch 1 training [time: 0.38s, train loss: 27.7143]
+Thu 11 Jan 2024 17:35:31 INFO  epoch 1 evaluating [time: 0.23s, valid_score: 0.019500]
+Thu 11 Jan 2024 17:35:32 INFO  valid result: 
+recall@10 : 0.0049    mrr@10 : 0.0195    ndcg@10 : 0.0073    hit@10 : 0.0594    precision@10 : 0.0062
+Thu 11 Jan 2024 17:35:32 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:32 INFO  epoch 2 training [time: 0.39s, train loss: 27.7030]
+Thu 11 Jan 2024 17:35:32 INFO  epoch 2 evaluating [time: 0.23s, valid_score: 0.019800]
+Thu 11 Jan 2024 17:35:32 INFO  valid result: 
+recall@10 : 0.0049    mrr@10 : 0.0198    ndcg@10 : 0.0073    hit@10 : 0.0573    precision@10 : 0.0059
+Thu 11 Jan 2024 17:35:32 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:32 INFO  epoch 3 training [time: 0.36s, train loss: 27.6898]
+Thu 11 Jan 2024 17:35:33 INFO  epoch 3 evaluating [time: 0.25s, valid_score: 0.020100]
+Thu 11 Jan 2024 17:35:33 INFO  valid result: 
+recall@10 : 0.0054    mrr@10 : 0.0201    ndcg@10 : 0.0076    hit@10 : 0.0604    precision@10 : 0.0063
+Thu 11 Jan 2024 17:35:33 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:33 INFO  epoch 4 training [time: 0.35s, train loss: 27.6797]
+Thu 11 Jan 2024 17:35:33 INFO  epoch 4 evaluating [time: 0.22s, valid_score: 0.020800]
+Thu 11 Jan 2024 17:35:33 INFO  valid result: 
+recall@10 : 0.0053    mrr@10 : 0.0208    ndcg@10 : 0.0077    hit@10 : 0.0604    precision@10 : 0.0063
+Thu 11 Jan 2024 17:35:33 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:34 INFO  epoch 5 training [time: 0.41s, train loss: 27.6689]
+Thu 11 Jan 2024 17:35:34 INFO  epoch 5 evaluating [time: 0.24s, valid_score: 0.021600]
+Thu 11 Jan 2024 17:35:34 INFO  valid result: 
+recall@10 : 0.0053    mrr@10 : 0.0216    ndcg@10 : 0.008    hit@10 : 0.0647    precision@10 : 0.0067
+Thu 11 Jan 2024 17:35:34 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:34 INFO  epoch 6 training [time: 0.35s, train loss: 27.6539]
+Thu 11 Jan 2024 17:35:35 INFO  epoch 6 evaluating [time: 0.27s, valid_score: 0.022900]
+Thu 11 Jan 2024 17:35:35 INFO  valid result: 
+recall@10 : 0.0053    mrr@10 : 0.0229    ndcg@10 : 0.0083    hit@10 : 0.0657    precision@10 : 0.0068
+Thu 11 Jan 2024 17:35:35 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:35 INFO  epoch 7 training [time: 0.36s, train loss: 27.6375]
+Thu 11 Jan 2024 17:35:35 INFO  epoch 7 evaluating [time: 0.21s, valid_score: 0.023500]
+Thu 11 Jan 2024 17:35:35 INFO  valid result: 
+recall@10 : 0.0052    mrr@10 : 0.0235    ndcg@10 : 0.0084    hit@10 : 0.0679    precision@10 : 0.007
+Thu 11 Jan 2024 17:35:35 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:36 INFO  epoch 8 training [time: 0.35s, train loss: 27.6216]
+Thu 11 Jan 2024 17:35:36 INFO  epoch 8 evaluating [time: 0.25s, valid_score: 0.026000]
+Thu 11 Jan 2024 17:35:36 INFO  valid result: 
+recall@10 : 0.0063    mrr@10 : 0.026    ndcg@10 : 0.0095    hit@10 : 0.0774    precision@10 : 0.008
+Thu 11 Jan 2024 17:35:36 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:36 INFO  epoch 9 training [time: 0.39s, train loss: 27.6040]
+Thu 11 Jan 2024 17:35:36 INFO  epoch 9 evaluating [time: 0.23s, valid_score: 0.029700]
+Thu 11 Jan 2024 17:35:36 INFO  valid result: 
+recall@10 : 0.0074    mrr@10 : 0.0297    ndcg@10 : 0.011    hit@10 : 0.0891    precision@10 : 0.0094
+Thu 11 Jan 2024 17:35:36 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:37 INFO  epoch 10 training [time: 0.34s, train loss: 27.5791]
+Thu 11 Jan 2024 17:35:37 INFO  epoch 10 evaluating [time: 0.22s, valid_score: 0.034600]
+Thu 11 Jan 2024 17:35:37 INFO  valid result: 
+recall@10 : 0.0084    mrr@10 : 0.0346    ndcg@10 : 0.0128    hit@10 : 0.0997    precision@10 : 0.011
+Thu 11 Jan 2024 17:35:37 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:37 INFO  epoch 11 training [time: 0.37s, train loss: 27.5558]
+Thu 11 Jan 2024 17:35:38 INFO  epoch 11 evaluating [time: 0.24s, valid_score: 0.038800]
+Thu 11 Jan 2024 17:35:38 INFO  valid result: 
+recall@10 : 0.01    mrr@10 : 0.0388    ndcg@10 : 0.0148    hit@10 : 0.1124    precision@10 : 0.0127
+Thu 11 Jan 2024 17:35:38 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:38 INFO  epoch 12 training [time: 0.37s, train loss: 27.5263]
+Thu 11 Jan 2024 17:35:38 INFO  epoch 12 evaluating [time: 0.22s, valid_score: 0.044800]
+Thu 11 Jan 2024 17:35:38 INFO  valid result: 
+recall@10 : 0.0111    mrr@10 : 0.0448    ndcg@10 : 0.0171    hit@10 : 0.1262    precision@10 : 0.0146
+Thu 11 Jan 2024 17:35:38 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:39 INFO  epoch 13 training [time: 0.38s, train loss: 27.4933]
+Thu 11 Jan 2024 17:35:39 INFO  epoch 13 evaluating [time: 0.23s, valid_score: 0.051300]
+Thu 11 Jan 2024 17:35:39 INFO  valid result: 
+recall@10 : 0.0121    mrr@10 : 0.0513    ndcg@10 : 0.0194    hit@10 : 0.1336    precision@10 : 0.016
+Thu 11 Jan 2024 17:35:39 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:39 INFO  epoch 14 training [time: 0.39s, train loss: 27.4496]
+Thu 11 Jan 2024 17:35:39 INFO  epoch 14 evaluating [time: 0.25s, valid_score: 0.060200]
+Thu 11 Jan 2024 17:35:39 INFO  valid result: 
+recall@10 : 0.0159    mrr@10 : 0.0602    ndcg@10 : 0.0241    hit@10 : 0.1633    precision@10 : 0.0206
+Thu 11 Jan 2024 17:35:40 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:40 INFO  epoch 15 training [time: 0.36s, train loss: 27.3976]
+Thu 11 Jan 2024 17:35:40 INFO  epoch 15 evaluating [time: 0.25s, valid_score: 0.069300]
+Thu 11 Jan 2024 17:35:40 INFO  valid result: 
+recall@10 : 0.0187    mrr@10 : 0.0693    ndcg@10 : 0.0292    hit@10 : 0.1866    precision@10 : 0.0257
+Thu 11 Jan 2024 17:35:40 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:41 INFO  epoch 16 training [time: 0.38s, train loss: 27.3360]
+Thu 11 Jan 2024 17:35:41 INFO  epoch 16 evaluating [time: 0.24s, valid_score: 0.081000]
+Thu 11 Jan 2024 17:35:41 INFO  valid result: 
+recall@10 : 0.0225    mrr@10 : 0.081    ndcg@10 : 0.0354    hit@10 : 0.2163    precision@10 : 0.0313
+Thu 11 Jan 2024 17:35:41 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:41 INFO  epoch 17 training [time: 0.36s, train loss: 27.2632]
+Thu 11 Jan 2024 17:35:41 INFO  epoch 17 evaluating [time: 0.24s, valid_score: 0.096400]
+Thu 11 Jan 2024 17:35:41 INFO  valid result: 
+recall@10 : 0.0269    mrr@10 : 0.0964    ndcg@10 : 0.0428    hit@10 : 0.2513    precision@10 : 0.0379
+Thu 11 Jan 2024 17:35:41 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:42 INFO  epoch 18 training [time: 0.37s, train loss: 27.1744]
+Thu 11 Jan 2024 17:35:42 INFO  epoch 18 evaluating [time: 0.23s, valid_score: 0.111200]
+Thu 11 Jan 2024 17:35:42 INFO  valid result: 
+recall@10 : 0.0317    mrr@10 : 0.1112    ndcg@10 : 0.0502    hit@10 : 0.28    precision@10 : 0.0439
+Thu 11 Jan 2024 17:35:42 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:42 INFO  epoch 19 training [time: 0.37s, train loss: 27.0705]
+Thu 11 Jan 2024 17:35:43 INFO  epoch 19 evaluating [time: 0.24s, valid_score: 0.127300]
+Thu 11 Jan 2024 17:35:43 INFO  valid result: 
+recall@10 : 0.0378    mrr@10 : 0.1273    ndcg@10 : 0.0589    hit@10 : 0.3097    precision@10 : 0.0515
+Thu 11 Jan 2024 17:35:43 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:43 INFO  epoch 20 training [time: 0.38s, train loss: 26.9445]
+Thu 11 Jan 2024 17:35:43 INFO  epoch 20 evaluating [time: 0.24s, valid_score: 0.141000]
+Thu 11 Jan 2024 17:35:43 INFO  valid result: 
+recall@10 : 0.0441    mrr@10 : 0.141    ndcg@10 : 0.0668    hit@10 : 0.3415    precision@10 : 0.0583
+Thu 11 Jan 2024 17:35:43 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:44 INFO  epoch 21 training [time: 0.59s, train loss: 26.7969]
+Thu 11 Jan 2024 17:35:44 INFO  epoch 21 evaluating [time: 0.38s, valid_score: 0.156800]
+Thu 11 Jan 2024 17:35:44 INFO  valid result: 
+recall@10 : 0.0539    mrr@10 : 0.1568    ndcg@10 : 0.0764    hit@10 : 0.3807    precision@10 : 0.0662
+Thu 11 Jan 2024 17:35:44 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:45 INFO  epoch 22 training [time: 0.42s, train loss: 26.6178]
+Thu 11 Jan 2024 17:35:45 INFO  epoch 22 evaluating [time: 0.25s, valid_score: 0.172000]
+Thu 11 Jan 2024 17:35:45 INFO  valid result: 
+recall@10 : 0.0583    mrr@10 : 0.172    ndcg@10 : 0.0837    hit@10 : 0.4008    precision@10 : 0.071
+Thu 11 Jan 2024 17:35:45 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:45 INFO  epoch 23 training [time: 0.42s, train loss: 26.4176]
+Thu 11 Jan 2024 17:35:46 INFO  epoch 23 evaluating [time: 0.24s, valid_score: 0.184300]
+Thu 11 Jan 2024 17:35:46 INFO  valid result: 
+recall@10 : 0.0643    mrr@10 : 0.1843    ndcg@10 : 0.0913    hit@10 : 0.4199    precision@10 : 0.0769
+Thu 11 Jan 2024 17:35:46 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:46 INFO  epoch 24 training [time: 0.35s, train loss: 26.1709]
+Thu 11 Jan 2024 17:35:46 INFO  epoch 24 evaluating [time: 0.24s, valid_score: 0.196100]
+Thu 11 Jan 2024 17:35:46 INFO  valid result: 
+recall@10 : 0.071    mrr@10 : 0.1961    ndcg@10 : 0.0987    hit@10 : 0.4369    precision@10 : 0.0822
+Thu 11 Jan 2024 17:35:46 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:47 INFO  epoch 25 training [time: 0.38s, train loss: 25.9044]
+Thu 11 Jan 2024 17:35:47 INFO  epoch 25 evaluating [time: 0.25s, valid_score: 0.208900]
+Thu 11 Jan 2024 17:35:47 INFO  valid result: 
+recall@10 : 0.077    mrr@10 : 0.2089    ndcg@10 : 0.1056    hit@10 : 0.456    precision@10 : 0.087
+Thu 11 Jan 2024 17:35:47 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:47 INFO  epoch 26 training [time: 0.38s, train loss: 25.5957]
+Thu 11 Jan 2024 17:35:48 INFO  epoch 26 evaluating [time: 0.49s, valid_score: 0.218700]
+Thu 11 Jan 2024 17:35:48 INFO  valid result: 
+recall@10 : 0.0797    mrr@10 : 0.2187    ndcg@10 : 0.1104    hit@10 : 0.4719    precision@10 : 0.0891
+Thu 11 Jan 2024 17:35:48 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:48 INFO  epoch 27 training [time: 0.40s, train loss: 25.2649]
+Thu 11 Jan 2024 17:35:48 INFO  epoch 27 evaluating [time: 0.28s, valid_score: 0.230300]
+Thu 11 Jan 2024 17:35:48 INFO  valid result: 
+recall@10 : 0.0845    mrr@10 : 0.2303    ndcg@10 : 0.1159    hit@10 : 0.4846    precision@10 : 0.0917
+Thu 11 Jan 2024 17:35:48 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:49 INFO  epoch 28 training [time: 0.38s, train loss: 24.8812]
+Thu 11 Jan 2024 17:35:49 INFO  epoch 28 evaluating [time: 0.29s, valid_score: 0.236800]
+Thu 11 Jan 2024 17:35:49 INFO  valid result: 
+recall@10 : 0.0854    mrr@10 : 0.2368    ndcg@10 : 0.119    hit@10 : 0.4814    precision@10 : 0.093
+Thu 11 Jan 2024 17:35:49 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:49 INFO  epoch 29 training [time: 0.44s, train loss: 24.4533]
+Thu 11 Jan 2024 17:35:50 INFO  epoch 29 evaluating [time: 0.24s, valid_score: 0.245500]
+Thu 11 Jan 2024 17:35:50 INFO  valid result: 
+recall@10 : 0.0916    mrr@10 : 0.2455    ndcg@10 : 0.124    hit@10 : 0.4995    precision@10 : 0.0953
+Thu 11 Jan 2024 17:35:50 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:50 INFO  epoch 30 training [time: 0.41s, train loss: 24.0233]
+Thu 11 Jan 2024 17:35:50 INFO  epoch 30 evaluating [time: 0.24s, valid_score: 0.255100]
+Thu 11 Jan 2024 17:35:50 INFO  valid result: 
+recall@10 : 0.0944    mrr@10 : 0.2551    ndcg@10 : 0.1282    hit@10 : 0.508    precision@10 : 0.0969
+Thu 11 Jan 2024 17:35:50 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:51 INFO  epoch 31 training [time: 0.40s, train loss: 23.5606]
+Thu 11 Jan 2024 17:35:51 INFO  epoch 31 evaluating [time: 0.26s, valid_score: 0.255600]
+Thu 11 Jan 2024 17:35:51 INFO  valid result: 
+recall@10 : 0.0978    mrr@10 : 0.2556    ndcg@10 : 0.1304    hit@10 : 0.5154    precision@10 : 0.0986
+Thu 11 Jan 2024 17:35:51 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:51 INFO  epoch 32 training [time: 0.36s, train loss: 23.0560]
+Thu 11 Jan 2024 17:35:52 INFO  epoch 32 evaluating [time: 0.23s, valid_score: 0.261800]
+Thu 11 Jan 2024 17:35:52 INFO  valid result: 
+recall@10 : 0.1013    mrr@10 : 0.2618    ndcg@10 : 0.1339    hit@10 : 0.5217    precision@10 : 0.1002
+Thu 11 Jan 2024 17:35:52 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:52 INFO  epoch 33 training [time: 0.40s, train loss: 22.5664]
+Thu 11 Jan 2024 17:35:52 INFO  epoch 33 evaluating [time: 0.27s, valid_score: 0.266800]
+Thu 11 Jan 2024 17:35:52 INFO  valid result: 
+recall@10 : 0.1038    mrr@10 : 0.2668    ndcg@10 : 0.1365    hit@10 : 0.527    precision@10 : 0.1016
+Thu 11 Jan 2024 17:35:52 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:53 INFO  epoch 34 training [time: 0.43s, train loss: 22.0424]
+Thu 11 Jan 2024 17:35:53 INFO  epoch 34 evaluating [time: 0.25s, valid_score: 0.273100]
+Thu 11 Jan 2024 17:35:53 INFO  valid result: 
+recall@10 : 0.1068    mrr@10 : 0.2731    ndcg@10 : 0.139    hit@10 : 0.5376    precision@10 : 0.1021
+Thu 11 Jan 2024 17:35:53 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:53 INFO  epoch 35 training [time: 0.39s, train loss: 21.5312]
+Thu 11 Jan 2024 17:35:54 INFO  epoch 35 evaluating [time: 0.23s, valid_score: 0.273900]
+Thu 11 Jan 2024 17:35:54 INFO  valid result: 
+recall@10 : 0.1098    mrr@10 : 0.2739    ndcg@10 : 0.1413    hit@10 : 0.5398    precision@10 : 0.1034
+Thu 11 Jan 2024 17:35:54 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:54 INFO  epoch 36 training [time: 0.36s, train loss: 20.9823]
+Thu 11 Jan 2024 17:35:54 INFO  epoch 36 evaluating [time: 0.26s, valid_score: 0.274800]
+Thu 11 Jan 2024 17:35:54 INFO  valid result: 
+recall@10 : 0.1112    mrr@10 : 0.2748    ndcg@10 : 0.142    hit@10 : 0.5429    precision@10 : 0.104
+Thu 11 Jan 2024 17:35:54 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:55 INFO  epoch 37 training [time: 0.38s, train loss: 20.5157]
+Thu 11 Jan 2024 17:35:55 INFO  epoch 37 evaluating [time: 0.21s, valid_score: 0.278400]
+Thu 11 Jan 2024 17:35:55 INFO  valid result: 
+recall@10 : 0.1139    mrr@10 : 0.2784    ndcg@10 : 0.1448    hit@10 : 0.5472    precision@10 : 0.106
+Thu 11 Jan 2024 17:35:55 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:55 INFO  epoch 38 training [time: 0.36s, train loss: 20.0394]
+Thu 11 Jan 2024 17:35:55 INFO  epoch 38 evaluating [time: 0.22s, valid_score: 0.281200]
+Thu 11 Jan 2024 17:35:55 INFO  valid result: 
+recall@10 : 0.1151    mrr@10 : 0.2812    ndcg@10 : 0.146    hit@10 : 0.5525    precision@10 : 0.1063
+Thu 11 Jan 2024 17:35:55 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:56 INFO  epoch 39 training [time: 0.39s, train loss: 19.5540]
+Thu 11 Jan 2024 17:35:56 INFO  epoch 39 evaluating [time: 0.26s, valid_score: 0.282100]
+Thu 11 Jan 2024 17:35:56 INFO  valid result: 
+recall@10 : 0.1145    mrr@10 : 0.2821    ndcg@10 : 0.1459    hit@10 : 0.5504    precision@10 : 0.1054
+Thu 11 Jan 2024 17:35:56 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:56 INFO  epoch 40 training [time: 0.38s, train loss: 19.1243]
+Thu 11 Jan 2024 17:35:57 INFO  epoch 40 evaluating [time: 0.23s, valid_score: 0.283000]
+Thu 11 Jan 2024 17:35:57 INFO  valid result: 
+recall@10 : 0.1163    mrr@10 : 0.283    ndcg@10 : 0.1473    hit@10 : 0.5567    precision@10 : 0.1066
+Thu 11 Jan 2024 17:35:57 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:57 INFO  epoch 41 training [time: 0.36s, train loss: 18.6199]
+Thu 11 Jan 2024 17:35:57 INFO  epoch 41 evaluating [time: 0.22s, valid_score: 0.284900]
+Thu 11 Jan 2024 17:35:57 INFO  valid result: 
+recall@10 : 0.1168    mrr@10 : 0.2849    ndcg@10 : 0.1482    hit@10 : 0.5567    precision@10 : 0.1066
+Thu 11 Jan 2024 17:35:57 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:58 INFO  epoch 42 training [time: 0.34s, train loss: 18.2511]
+Thu 11 Jan 2024 17:35:58 INFO  epoch 42 evaluating [time: 0.24s, valid_score: 0.289700]
+Thu 11 Jan 2024 17:35:58 INFO  valid result: 
+recall@10 : 0.1188    mrr@10 : 0.2897    ndcg@10 : 0.1503    hit@10 : 0.5673    precision@10 : 0.1081
+Thu 11 Jan 2024 17:35:58 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:58 INFO  epoch 43 training [time: 0.37s, train loss: 17.8892]
+Thu 11 Jan 2024 17:35:59 INFO  epoch 43 evaluating [time: 0.24s, valid_score: 0.291100]
+Thu 11 Jan 2024 17:35:59 INFO  valid result: 
+recall@10 : 0.1212    mrr@10 : 0.2911    ndcg@10 : 0.1516    hit@10 : 0.5684    precision@10 : 0.1083
+Thu 11 Jan 2024 17:35:59 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:35:59 INFO  epoch 44 training [time: 0.37s, train loss: 17.4989]
+Thu 11 Jan 2024 17:35:59 INFO  epoch 44 evaluating [time: 0.25s, valid_score: 0.292300]
+Thu 11 Jan 2024 17:35:59 INFO  valid result: 
+recall@10 : 0.1215    mrr@10 : 0.2923    ndcg@10 : 0.1519    hit@10 : 0.5684    precision@10 : 0.1077
+Thu 11 Jan 2024 17:35:59 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:00 INFO  epoch 45 training [time: 0.35s, train loss: 17.1816]
+Thu 11 Jan 2024 17:36:00 INFO  epoch 45 evaluating [time: 0.23s, valid_score: 0.291000]
+Thu 11 Jan 2024 17:36:00 INFO  valid result: 
+recall@10 : 0.1216    mrr@10 : 0.291    ndcg@10 : 0.152    hit@10 : 0.5652    precision@10 : 0.108
+Thu 11 Jan 2024 17:36:00 INFO  epoch 46 training [time: 0.36s, train loss: 16.8315]
+Thu 11 Jan 2024 17:36:00 INFO  epoch 46 evaluating [time: 0.26s, valid_score: 0.293700]
+Thu 11 Jan 2024 17:36:00 INFO  valid result: 
+recall@10 : 0.1237    mrr@10 : 0.2937    ndcg@10 : 0.1538    hit@10 : 0.5726    precision@10 : 0.109
+Thu 11 Jan 2024 17:36:00 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:01 INFO  epoch 47 training [time: 0.40s, train loss: 16.5108]
+Thu 11 Jan 2024 17:36:01 INFO  epoch 47 evaluating [time: 0.24s, valid_score: 0.295300]
+Thu 11 Jan 2024 17:36:01 INFO  valid result: 
+recall@10 : 0.1266    mrr@10 : 0.2953    ndcg@10 : 0.1555    hit@10 : 0.579    precision@10 : 0.1104
+Thu 11 Jan 2024 17:36:01 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:01 INFO  epoch 48 training [time: 0.38s, train loss: 16.1448]
+Thu 11 Jan 2024 17:36:02 INFO  epoch 48 evaluating [time: 0.25s, valid_score: 0.295900]
+Thu 11 Jan 2024 17:36:02 INFO  valid result: 
+recall@10 : 0.1278    mrr@10 : 0.2959    ndcg@10 : 0.1561    hit@10 : 0.5801    precision@10 : 0.1103
+Thu 11 Jan 2024 17:36:02 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:02 INFO  epoch 49 training [time: 0.45s, train loss: 15.9807]
+Thu 11 Jan 2024 17:36:02 INFO  epoch 49 evaluating [time: 0.30s, valid_score: 0.295900]
+Thu 11 Jan 2024 17:36:02 INFO  valid result: 
+recall@10 : 0.1295    mrr@10 : 0.2959    ndcg@10 : 0.157    hit@10 : 0.5832    precision@10 : 0.1109
+Thu 11 Jan 2024 17:36:02 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:03 INFO  epoch 50 training [time: 0.49s, train loss: 15.7622]
+Thu 11 Jan 2024 17:36:03 INFO  epoch 50 evaluating [time: 0.25s, valid_score: 0.296800]
+Thu 11 Jan 2024 17:36:03 INFO  valid result: 
+recall@10 : 0.1282    mrr@10 : 0.2968    ndcg@10 : 0.1568    hit@10 : 0.579    precision@10 : 0.1101
+Thu 11 Jan 2024 17:36:03 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:04 INFO  epoch 51 training [time: 0.39s, train loss: 15.5378]
+Thu 11 Jan 2024 17:36:04 INFO  epoch 51 evaluating [time: 0.20s, valid_score: 0.299000]
+Thu 11 Jan 2024 17:36:04 INFO  valid result: 
+recall@10 : 0.129    mrr@10 : 0.299    ndcg@10 : 0.1576    hit@10 : 0.5822    precision@10 : 0.1102
+Thu 11 Jan 2024 17:36:04 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:04 INFO  epoch 52 training [time: 0.38s, train loss: 15.2280]
+Thu 11 Jan 2024 17:36:04 INFO  epoch 52 evaluating [time: 0.23s, valid_score: 0.300600]
+Thu 11 Jan 2024 17:36:04 INFO  valid result: 
+recall@10 : 0.1299    mrr@10 : 0.3006    ndcg@10 : 0.1581    hit@10 : 0.5864    precision@10 : 0.1101
+Thu 11 Jan 2024 17:36:04 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:05 INFO  epoch 53 training [time: 0.37s, train loss: 15.0441]
+Thu 11 Jan 2024 17:36:05 INFO  epoch 53 evaluating [time: 0.24s, valid_score: 0.304800]
+Thu 11 Jan 2024 17:36:05 INFO  valid result: 
+recall@10 : 0.1325    mrr@10 : 0.3048    ndcg@10 : 0.1605    hit@10 : 0.5907    precision@10 : 0.1106
+Thu 11 Jan 2024 17:36:05 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:05 INFO  epoch 54 training [time: 0.39s, train loss: 14.8798]
+Thu 11 Jan 2024 17:36:06 INFO  epoch 54 evaluating [time: 0.23s, valid_score: 0.306400]
+Thu 11 Jan 2024 17:36:06 INFO  valid result: 
+recall@10 : 0.1341    mrr@10 : 0.3064    ndcg@10 : 0.1619    hit@10 : 0.5949    precision@10 : 0.1115
+Thu 11 Jan 2024 17:36:06 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:06 INFO  epoch 55 training [time: 0.38s, train loss: 14.6791]
+Thu 11 Jan 2024 17:36:06 INFO  epoch 55 evaluating [time: 0.25s, valid_score: 0.307000]
+Thu 11 Jan 2024 17:36:06 INFO  valid result: 
+recall@10 : 0.1341    mrr@10 : 0.307    ndcg@10 : 0.1622    hit@10 : 0.5949    precision@10 : 0.1117
+Thu 11 Jan 2024 17:36:06 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:07 INFO  epoch 56 training [time: 0.37s, train loss: 14.5142]
+Thu 11 Jan 2024 17:36:07 INFO  epoch 56 evaluating [time: 0.23s, valid_score: 0.309300]
+Thu 11 Jan 2024 17:36:07 INFO  valid result: 
+recall@10 : 0.1363    mrr@10 : 0.3093    ndcg@10 : 0.1634    hit@10 : 0.5981    precision@10 : 0.1123
+Thu 11 Jan 2024 17:36:07 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:07 INFO  epoch 57 training [time: 0.36s, train loss: 14.3824]
+Thu 11 Jan 2024 17:36:08 INFO  epoch 57 evaluating [time: 0.23s, valid_score: 0.311000]
+Thu 11 Jan 2024 17:36:08 INFO  valid result: 
+recall@10 : 0.1362    mrr@10 : 0.311    ndcg@10 : 0.1638    hit@10 : 0.6013    precision@10 : 0.112
+Thu 11 Jan 2024 17:36:08 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:08 INFO  epoch 58 training [time: 0.38s, train loss: 14.2396]
+Thu 11 Jan 2024 17:36:08 INFO  epoch 58 evaluating [time: 0.24s, valid_score: 0.311200]
+Thu 11 Jan 2024 17:36:08 INFO  valid result: 
+recall@10 : 0.1367    mrr@10 : 0.3112    ndcg@10 : 0.1644    hit@10 : 0.6023    precision@10 : 0.1125
+Thu 11 Jan 2024 17:36:08 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:09 INFO  epoch 59 training [time: 0.38s, train loss: 14.1432]
+Thu 11 Jan 2024 17:36:09 INFO  epoch 59 evaluating [time: 0.22s, valid_score: 0.313900]
+Thu 11 Jan 2024 17:36:09 INFO  valid result: 
+recall@10 : 0.1378    mrr@10 : 0.3139    ndcg@10 : 0.1654    hit@10 : 0.6013    precision@10 : 0.1126
+Thu 11 Jan 2024 17:36:09 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:09 INFO  epoch 60 training [time: 0.37s, train loss: 13.9992]
+Thu 11 Jan 2024 17:36:09 INFO  epoch 60 evaluating [time: 0.21s, valid_score: 0.315800]
+Thu 11 Jan 2024 17:36:09 INFO  valid result: 
+recall@10 : 0.138    mrr@10 : 0.3158    ndcg@10 : 0.1665    hit@10 : 0.6013    precision@10 : 0.1134
+Thu 11 Jan 2024 17:36:09 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:10 INFO  epoch 61 training [time: 0.36s, train loss: 13.9348]
+Thu 11 Jan 2024 17:36:10 INFO  epoch 61 evaluating [time: 0.24s, valid_score: 0.316100]
+Thu 11 Jan 2024 17:36:10 INFO  valid result: 
+recall@10 : 0.1388    mrr@10 : 0.3161    ndcg@10 : 0.1666    hit@10 : 0.6045    precision@10 : 0.1134
+Thu 11 Jan 2024 17:36:10 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:10 INFO  epoch 62 training [time: 0.35s, train loss: 13.7636]
+Thu 11 Jan 2024 17:36:11 INFO  epoch 62 evaluating [time: 0.23s, valid_score: 0.317800]
+Thu 11 Jan 2024 17:36:11 INFO  valid result: 
+recall@10 : 0.1408    mrr@10 : 0.3178    ndcg@10 : 0.1681    hit@10 : 0.6087    precision@10 : 0.1144
+Thu 11 Jan 2024 17:36:11 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:11 INFO  epoch 63 training [time: 0.37s, train loss: 13.6279]
+Thu 11 Jan 2024 17:36:11 INFO  epoch 63 evaluating [time: 0.23s, valid_score: 0.318100]
+Thu 11 Jan 2024 17:36:11 INFO  valid result: 
+recall@10 : 0.1406    mrr@10 : 0.3181    ndcg@10 : 0.1684    hit@10 : 0.6098    precision@10 : 0.1143
+Thu 11 Jan 2024 17:36:11 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:12 INFO  epoch 64 training [time: 0.35s, train loss: 13.4858]
+Thu 11 Jan 2024 17:36:12 INFO  epoch 64 evaluating [time: 0.23s, valid_score: 0.316500]
+Thu 11 Jan 2024 17:36:12 INFO  valid result: 
+recall@10 : 0.143    mrr@10 : 0.3165    ndcg@10 : 0.1689    hit@10 : 0.614    precision@10 : 0.1152
+Thu 11 Jan 2024 17:36:12 INFO  epoch 65 training [time: 0.34s, train loss: 13.4626]
+Thu 11 Jan 2024 17:36:12 INFO  epoch 65 evaluating [time: 0.22s, valid_score: 0.316900]
+Thu 11 Jan 2024 17:36:12 INFO  valid result: 
+recall@10 : 0.1441    mrr@10 : 0.3169    ndcg@10 : 0.1697    hit@10 : 0.6119    precision@10 : 0.1161
+Thu 11 Jan 2024 17:36:13 INFO  epoch 66 training [time: 0.40s, train loss: 13.3167]
+Thu 11 Jan 2024 17:36:13 INFO  epoch 66 evaluating [time: 0.23s, valid_score: 0.317100]
+Thu 11 Jan 2024 17:36:13 INFO  valid result: 
+recall@10 : 0.1458    mrr@10 : 0.3171    ndcg@10 : 0.1706    hit@10 : 0.614    precision@10 : 0.1169
+Thu 11 Jan 2024 17:36:13 INFO  epoch 67 training [time: 0.35s, train loss: 13.2605]
+Thu 11 Jan 2024 17:36:14 INFO  epoch 67 evaluating [time: 0.23s, valid_score: 0.318300]
+Thu 11 Jan 2024 17:36:14 INFO  valid result: 
+recall@10 : 0.1466    mrr@10 : 0.3183    ndcg@10 : 0.1713    hit@10 : 0.6172    precision@10 : 0.1173
+Thu 11 Jan 2024 17:36:14 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:14 INFO  epoch 68 training [time: 0.39s, train loss: 13.1002]
+Thu 11 Jan 2024 17:36:14 INFO  epoch 68 evaluating [time: 0.24s, valid_score: 0.320600]
+Thu 11 Jan 2024 17:36:14 INFO  valid result: 
+recall@10 : 0.1482    mrr@10 : 0.3206    ndcg@10 : 0.1729    hit@10 : 0.6172    precision@10 : 0.1179
+Thu 11 Jan 2024 17:36:14 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:15 INFO  epoch 69 training [time: 0.37s, train loss: 13.0836]
+Thu 11 Jan 2024 17:36:15 INFO  epoch 69 evaluating [time: 0.22s, valid_score: 0.321900]
+Thu 11 Jan 2024 17:36:15 INFO  valid result: 
+recall@10 : 0.1506    mrr@10 : 0.3219    ndcg@10 : 0.1737    hit@10 : 0.6225    precision@10 : 0.1177
+Thu 11 Jan 2024 17:36:15 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:15 INFO  epoch 70 training [time: 0.37s, train loss: 12.9729]
+Thu 11 Jan 2024 17:36:15 INFO  epoch 70 evaluating [time: 0.26s, valid_score: 0.320000]
+Thu 11 Jan 2024 17:36:15 INFO  valid result: 
+recall@10 : 0.1501    mrr@10 : 0.32    ndcg@10 : 0.1733    hit@10 : 0.6225    precision@10 : 0.1177
+Thu 11 Jan 2024 17:36:16 INFO  epoch 71 training [time: 0.37s, train loss: 12.8828]
+Thu 11 Jan 2024 17:36:16 INFO  epoch 71 evaluating [time: 0.21s, valid_score: 0.321900]
+Thu 11 Jan 2024 17:36:16 INFO  valid result: 
+recall@10 : 0.1501    mrr@10 : 0.3219    ndcg@10 : 0.1736    hit@10 : 0.6225    precision@10 : 0.1178
+Thu 11 Jan 2024 17:36:16 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:16 INFO  epoch 72 training [time: 0.39s, train loss: 12.8579]
+Thu 11 Jan 2024 17:36:17 INFO  epoch 72 evaluating [time: 0.23s, valid_score: 0.322700]
+Thu 11 Jan 2024 17:36:17 INFO  valid result: 
+recall@10 : 0.1509    mrr@10 : 0.3227    ndcg@10 : 0.1744    hit@10 : 0.6235    precision@10 : 0.1185
+Thu 11 Jan 2024 17:36:17 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:17 INFO  epoch 73 training [time: 0.37s, train loss: 12.7482]
+Thu 11 Jan 2024 17:36:17 INFO  epoch 73 evaluating [time: 0.22s, valid_score: 0.321900]
+Thu 11 Jan 2024 17:36:17 INFO  valid result: 
+recall@10 : 0.1519    mrr@10 : 0.3219    ndcg@10 : 0.1747    hit@10 : 0.6246    precision@10 : 0.1188
+Thu 11 Jan 2024 17:36:18 INFO  epoch 74 training [time: 0.36s, train loss: 12.7106]
+Thu 11 Jan 2024 17:36:18 INFO  epoch 74 evaluating [time: 0.23s, valid_score: 0.321300]
+Thu 11 Jan 2024 17:36:18 INFO  valid result: 
+recall@10 : 0.1518    mrr@10 : 0.3213    ndcg@10 : 0.1745    hit@10 : 0.6246    precision@10 : 0.1186
+Thu 11 Jan 2024 17:36:18 INFO  epoch 75 training [time: 0.37s, train loss: 12.5782]
+Thu 11 Jan 2024 17:36:18 INFO  epoch 75 evaluating [time: 0.23s, valid_score: 0.323500]
+Thu 11 Jan 2024 17:36:18 INFO  valid result: 
+recall@10 : 0.1528    mrr@10 : 0.3235    ndcg@10 : 0.1756    hit@10 : 0.6288    precision@10 : 0.1188
+Thu 11 Jan 2024 17:36:18 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:19 INFO  epoch 76 training [time: 0.38s, train loss: 12.4573]
+Thu 11 Jan 2024 17:36:19 INFO  epoch 76 evaluating [time: 0.22s, valid_score: 0.323200]
+Thu 11 Jan 2024 17:36:19 INFO  valid result: 
+recall@10 : 0.1536    mrr@10 : 0.3232    ndcg@10 : 0.1763    hit@10 : 0.6267    precision@10 : 0.1192
+Thu 11 Jan 2024 17:36:19 INFO  epoch 77 training [time: 0.37s, train loss: 12.4510]
+Thu 11 Jan 2024 17:36:20 INFO  epoch 77 evaluating [time: 0.26s, valid_score: 0.322200]
+Thu 11 Jan 2024 17:36:20 INFO  valid result: 
+recall@10 : 0.1557    mrr@10 : 0.3222    ndcg@10 : 0.1773    hit@10 : 0.632    precision@10 : 0.1205
+Thu 11 Jan 2024 17:36:20 INFO  epoch 78 training [time: 0.39s, train loss: 12.3785]
+Thu 11 Jan 2024 17:36:20 INFO  epoch 78 evaluating [time: 0.24s, valid_score: 0.321900]
+Thu 11 Jan 2024 17:36:20 INFO  valid result: 
+recall@10 : 0.1561    mrr@10 : 0.3219    ndcg@10 : 0.1775    hit@10 : 0.6299    precision@10 : 0.1204
+Thu 11 Jan 2024 17:36:21 INFO  epoch 79 training [time: 0.38s, train loss: 12.3322]
+Thu 11 Jan 2024 17:36:21 INFO  epoch 79 evaluating [time: 0.22s, valid_score: 0.323000]
+Thu 11 Jan 2024 17:36:21 INFO  valid result: 
+recall@10 : 0.1574    mrr@10 : 0.323    ndcg@10 : 0.1786    hit@10 : 0.632    precision@10 : 0.1213
+Thu 11 Jan 2024 17:36:21 INFO  epoch 80 training [time: 0.36s, train loss: 12.2186]
+Thu 11 Jan 2024 17:36:21 INFO  epoch 80 evaluating [time: 0.22s, valid_score: 0.322200]
+Thu 11 Jan 2024 17:36:21 INFO  valid result: 
+recall@10 : 0.1587    mrr@10 : 0.3222    ndcg@10 : 0.1793    hit@10 : 0.6352    precision@10 : 0.1221
+Thu 11 Jan 2024 17:36:22 INFO  epoch 81 training [time: 0.38s, train loss: 12.1440]
+Thu 11 Jan 2024 17:36:22 INFO  epoch 81 evaluating [time: 0.23s, valid_score: 0.322100]
+Thu 11 Jan 2024 17:36:22 INFO  valid result: 
+recall@10 : 0.1597    mrr@10 : 0.3221    ndcg@10 : 0.1796    hit@10 : 0.6405    precision@10 : 0.1223
+Thu 11 Jan 2024 17:36:22 INFO  epoch 82 training [time: 0.37s, train loss: 12.0130]
+Thu 11 Jan 2024 17:36:23 INFO  epoch 82 evaluating [time: 0.23s, valid_score: 0.321600]
+Thu 11 Jan 2024 17:36:23 INFO  valid result: 
+recall@10 : 0.1604    mrr@10 : 0.3216    ndcg@10 : 0.18    hit@10 : 0.6405    precision@10 : 0.1228
+Thu 11 Jan 2024 17:36:23 INFO  epoch 83 training [time: 0.38s, train loss: 11.9485]
+Thu 11 Jan 2024 17:36:23 INFO  epoch 83 evaluating [time: 0.25s, valid_score: 0.323200]
+Thu 11 Jan 2024 17:36:23 INFO  valid result: 
+recall@10 : 0.161    mrr@10 : 0.3232    ndcg@10 : 0.1807    hit@10 : 0.6384    precision@10 : 0.1231
+Thu 11 Jan 2024 17:36:24 INFO  epoch 84 training [time: 0.39s, train loss: 11.8380]
+Thu 11 Jan 2024 17:36:24 INFO  epoch 84 evaluating [time: 0.21s, valid_score: 0.324000]
+Thu 11 Jan 2024 17:36:24 INFO  valid result: 
+recall@10 : 0.1626    mrr@10 : 0.324    ndcg@10 : 0.1821    hit@10 : 0.6405    precision@10 : 0.1242
+Thu 11 Jan 2024 17:36:24 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:24 INFO  epoch 85 training [time: 0.39s, train loss: 11.9861]
+Thu 11 Jan 2024 17:36:25 INFO  epoch 85 evaluating [time: 0.25s, valid_score: 0.324300]
+Thu 11 Jan 2024 17:36:25 INFO  valid result: 
+recall@10 : 0.1622    mrr@10 : 0.3243    ndcg@10 : 0.1823    hit@10 : 0.6384    precision@10 : 0.1243
+Thu 11 Jan 2024 17:36:25 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:25 INFO  epoch 86 training [time: 0.37s, train loss: 11.8558]
+Thu 11 Jan 2024 17:36:25 INFO  epoch 86 evaluating [time: 0.22s, valid_score: 0.323700]
+Thu 11 Jan 2024 17:36:25 INFO  valid result: 
+recall@10 : 0.1622    mrr@10 : 0.3237    ndcg@10 : 0.1823    hit@10 : 0.6384    precision@10 : 0.1246
+Thu 11 Jan 2024 17:36:26 INFO  epoch 87 training [time: 0.44s, train loss: 11.7871]
+Thu 11 Jan 2024 17:36:26 INFO  epoch 87 evaluating [time: 0.24s, valid_score: 0.325700]
+Thu 11 Jan 2024 17:36:26 INFO  valid result: 
+recall@10 : 0.1621    mrr@10 : 0.3257    ndcg@10 : 0.1831    hit@10 : 0.6394    precision@10 : 0.1248
+Thu 11 Jan 2024 17:36:26 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:26 INFO  epoch 88 training [time: 0.39s, train loss: 11.6955]
+Thu 11 Jan 2024 17:36:26 INFO  epoch 88 evaluating [time: 0.24s, valid_score: 0.324000]
+Thu 11 Jan 2024 17:36:26 INFO  valid result: 
+recall@10 : 0.1638    mrr@10 : 0.324    ndcg@10 : 0.183    hit@10 : 0.6426    precision@10 : 0.1251
+Thu 11 Jan 2024 17:36:27 INFO  epoch 89 training [time: 0.37s, train loss: 11.6602]
+Thu 11 Jan 2024 17:36:27 INFO  epoch 89 evaluating [time: 0.24s, valid_score: 0.324500]
+Thu 11 Jan 2024 17:36:27 INFO  valid result: 
+recall@10 : 0.1634    mrr@10 : 0.3245    ndcg@10 : 0.1834    hit@10 : 0.6426    precision@10 : 0.1255
+Thu 11 Jan 2024 17:36:27 INFO  epoch 90 training [time: 0.36s, train loss: 11.5541]
+Thu 11 Jan 2024 17:36:28 INFO  epoch 90 evaluating [time: 0.25s, valid_score: 0.326100]
+Thu 11 Jan 2024 17:36:28 INFO  valid result: 
+recall@10 : 0.1634    mrr@10 : 0.3261    ndcg@10 : 0.1836    hit@10 : 0.6458    precision@10 : 0.1253
+Thu 11 Jan 2024 17:36:28 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:28 INFO  epoch 91 training [time: 0.37s, train loss: 11.5063]
+Thu 11 Jan 2024 17:36:28 INFO  epoch 91 evaluating [time: 0.25s, valid_score: 0.326200]
+Thu 11 Jan 2024 17:36:28 INFO  valid result: 
+recall@10 : 0.1646    mrr@10 : 0.3262    ndcg@10 : 0.1842    hit@10 : 0.6458    precision@10 : 0.1259
+Thu 11 Jan 2024 17:36:28 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:29 INFO  epoch 92 training [time: 0.42s, train loss: 11.5019]
+Thu 11 Jan 2024 17:36:29 INFO  epoch 92 evaluating [time: 0.24s, valid_score: 0.326000]
+Thu 11 Jan 2024 17:36:29 INFO  valid result: 
+recall@10 : 0.165    mrr@10 : 0.326    ndcg@10 : 0.1845    hit@10 : 0.6458    precision@10 : 0.1261
+Thu 11 Jan 2024 17:36:29 INFO  epoch 93 training [time: 0.39s, train loss: 11.5582]
+Thu 11 Jan 2024 17:36:30 INFO  epoch 93 evaluating [time: 0.27s, valid_score: 0.328100]
+Thu 11 Jan 2024 17:36:30 INFO  valid result: 
+recall@10 : 0.1658    mrr@10 : 0.3281    ndcg@10 : 0.1855    hit@10 : 0.6501    precision@10 : 0.1266
+Thu 11 Jan 2024 17:36:30 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:30 INFO  epoch 94 training [time: 0.41s, train loss: 11.4247]
+Thu 11 Jan 2024 17:36:30 INFO  epoch 94 evaluating [time: 0.29s, valid_score: 0.329300]
+Thu 11 Jan 2024 17:36:30 INFO  valid result: 
+recall@10 : 0.1678    mrr@10 : 0.3293    ndcg@10 : 0.1865    hit@10 : 0.6532    precision@10 : 0.1276
+Thu 11 Jan 2024 17:36:30 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:31 INFO  epoch 95 training [time: 0.41s, train loss: 11.4542]
+Thu 11 Jan 2024 17:36:31 INFO  epoch 95 evaluating [time: 0.25s, valid_score: 0.329700]
+Thu 11 Jan 2024 17:36:31 INFO  valid result: 
+recall@10 : 0.168    mrr@10 : 0.3297    ndcg@10 : 0.1869    hit@10 : 0.6522    precision@10 : 0.1279
+Thu 11 Jan 2024 17:36:31 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:31 INFO  epoch 96 training [time: 0.36s, train loss: 11.3372]
+Thu 11 Jan 2024 17:36:32 INFO  epoch 96 evaluating [time: 0.26s, valid_score: 0.330300]
+Thu 11 Jan 2024 17:36:32 INFO  valid result: 
+recall@10 : 0.1696    mrr@10 : 0.3303    ndcg@10 : 0.1876    hit@10 : 0.6564    precision@10 : 0.128
+Thu 11 Jan 2024 17:36:32 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:32 INFO  epoch 97 training [time: 0.42s, train loss: 11.1573]
+Thu 11 Jan 2024 17:36:32 INFO  epoch 97 evaluating [time: 0.23s, valid_score: 0.331900]
+Thu 11 Jan 2024 17:36:32 INFO  valid result: 
+recall@10 : 0.1693    mrr@10 : 0.3319    ndcg@10 : 0.1879    hit@10 : 0.6575    precision@10 : 0.1282
+Thu 11 Jan 2024 17:36:32 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:33 INFO  epoch 98 training [time: 0.40s, train loss: 11.1064]
+Thu 11 Jan 2024 17:36:33 INFO  epoch 98 evaluating [time: 0.22s, valid_score: 0.333200]
+Thu 11 Jan 2024 17:36:33 INFO  valid result: 
+recall@10 : 0.171    mrr@10 : 0.3332    ndcg@10 : 0.1886    hit@10 : 0.6607    precision@10 : 0.1286
+Thu 11 Jan 2024 17:36:33 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:33 INFO  epoch 99 training [time: 0.41s, train loss: 11.1348]
+Thu 11 Jan 2024 17:36:34 INFO  epoch 99 evaluating [time: 0.26s, valid_score: 0.331900]
+Thu 11 Jan 2024 17:36:34 INFO  valid result: 
+recall@10 : 0.1713    mrr@10 : 0.3319    ndcg@10 : 0.189    hit@10 : 0.6596    precision@10 : 0.1288
+Thu 11 Jan 2024 17:36:34 INFO  epoch 100 training [time: 0.42s, train loss: 11.1094]
+Thu 11 Jan 2024 17:36:34 INFO  epoch 100 evaluating [time: 0.27s, valid_score: 0.332200]
+Thu 11 Jan 2024 17:36:34 INFO  valid result: 
+recall@10 : 0.1712    mrr@10 : 0.3322    ndcg@10 : 0.189    hit@10 : 0.6596    precision@10 : 0.1286
+Thu 11 Jan 2024 17:36:35 INFO  epoch 101 training [time: 0.36s, train loss: 11.0428]
+Thu 11 Jan 2024 17:36:35 INFO  epoch 101 evaluating [time: 0.24s, valid_score: 0.332500]
+Thu 11 Jan 2024 17:36:35 INFO  valid result: 
+recall@10 : 0.1712    mrr@10 : 0.3325    ndcg@10 : 0.1892    hit@10 : 0.6596    precision@10 : 0.1292
+Thu 11 Jan 2024 17:36:35 INFO  epoch 102 training [time: 0.39s, train loss: 10.9828]
+Thu 11 Jan 2024 17:36:36 INFO  epoch 102 evaluating [time: 0.22s, valid_score: 0.331500]
+Thu 11 Jan 2024 17:36:36 INFO  valid result: 
+recall@10 : 0.1725    mrr@10 : 0.3315    ndcg@10 : 0.1899    hit@10 : 0.6585    precision@10 : 0.1301
+Thu 11 Jan 2024 17:36:36 INFO  epoch 103 training [time: 0.39s, train loss: 10.9346]
+Thu 11 Jan 2024 17:36:36 INFO  epoch 103 evaluating [time: 0.24s, valid_score: 0.331900]
+Thu 11 Jan 2024 17:36:36 INFO  valid result: 
+recall@10 : 0.1738    mrr@10 : 0.3319    ndcg@10 : 0.1906    hit@10 : 0.6617    precision@10 : 0.131
+Thu 11 Jan 2024 17:36:37 INFO  epoch 104 training [time: 0.36s, train loss: 10.8541]
+Thu 11 Jan 2024 17:36:37 INFO  epoch 104 evaluating [time: 0.24s, valid_score: 0.333100]
+Thu 11 Jan 2024 17:36:37 INFO  valid result: 
+recall@10 : 0.1728    mrr@10 : 0.3331    ndcg@10 : 0.1906    hit@10 : 0.6638    precision@10 : 0.1311
+Thu 11 Jan 2024 17:36:37 INFO  epoch 105 training [time: 0.41s, train loss: 10.8384]
+Thu 11 Jan 2024 17:36:37 INFO  epoch 105 evaluating [time: 0.24s, valid_score: 0.332300]
+Thu 11 Jan 2024 17:36:37 INFO  valid result: 
+recall@10 : 0.1738    mrr@10 : 0.3323    ndcg@10 : 0.191    hit@10 : 0.666    precision@10 : 0.132
+Thu 11 Jan 2024 17:36:38 INFO  epoch 106 training [time: 0.36s, train loss: 10.7287]
+Thu 11 Jan 2024 17:36:38 INFO  epoch 106 evaluating [time: 0.22s, valid_score: 0.332600]
+Thu 11 Jan 2024 17:36:38 INFO  valid result: 
+recall@10 : 0.1732    mrr@10 : 0.3326    ndcg@10 : 0.1907    hit@10 : 0.6638    precision@10 : 0.1318
+Thu 11 Jan 2024 17:36:38 INFO  epoch 107 training [time: 0.38s, train loss: 10.6363]
+Thu 11 Jan 2024 17:36:39 INFO  epoch 107 evaluating [time: 0.24s, valid_score: 0.333000]
+Thu 11 Jan 2024 17:36:39 INFO  valid result: 
+recall@10 : 0.1735    mrr@10 : 0.333    ndcg@10 : 0.1913    hit@10 : 0.666    precision@10 : 0.1324
+Thu 11 Jan 2024 17:36:39 INFO  epoch 108 training [time: 0.36s, train loss: 10.6432]
+Thu 11 Jan 2024 17:36:39 INFO  epoch 108 evaluating [time: 0.23s, valid_score: 0.333100]
+Thu 11 Jan 2024 17:36:39 INFO  valid result: 
+recall@10 : 0.1733    mrr@10 : 0.3331    ndcg@10 : 0.1912    hit@10 : 0.666    precision@10 : 0.1322
+Thu 11 Jan 2024 17:36:40 INFO  epoch 109 training [time: 0.34s, train loss: 10.6376]
+Thu 11 Jan 2024 17:36:40 INFO  epoch 109 evaluating [time: 0.27s, valid_score: 0.335600]
+Thu 11 Jan 2024 17:36:40 INFO  valid result: 
+recall@10 : 0.174    mrr@10 : 0.3356    ndcg@10 : 0.1922    hit@10 : 0.667    precision@10 : 0.1327
+Thu 11 Jan 2024 17:36:40 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:40 INFO  epoch 110 training [time: 0.36s, train loss: 10.5158]
+Thu 11 Jan 2024 17:36:41 INFO  epoch 110 evaluating [time: 0.22s, valid_score: 0.336900]
+Thu 11 Jan 2024 17:36:41 INFO  valid result: 
+recall@10 : 0.1742    mrr@10 : 0.3369    ndcg@10 : 0.1928    hit@10 : 0.6681    precision@10 : 0.133
+Thu 11 Jan 2024 17:36:41 INFO  Saving current: saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:41 INFO  epoch 111 training [time: 0.36s, train loss: 10.5178]
+Thu 11 Jan 2024 17:36:41 INFO  epoch 111 evaluating [time: 0.26s, valid_score: 0.334600]
+Thu 11 Jan 2024 17:36:41 INFO  valid result: 
+recall@10 : 0.1744    mrr@10 : 0.3346    ndcg@10 : 0.1922    hit@10 : 0.667    precision@10 : 0.133
+Thu 11 Jan 2024 17:36:42 INFO  epoch 112 training [time: 0.40s, train loss: 10.4958]
+Thu 11 Jan 2024 17:36:42 INFO  epoch 112 evaluating [time: 0.22s, valid_score: 0.332400]
+Thu 11 Jan 2024 17:36:42 INFO  valid result: 
+recall@10 : 0.174    mrr@10 : 0.3324    ndcg@10 : 0.1918    hit@10 : 0.667    precision@10 : 0.1328
+Thu 11 Jan 2024 17:36:42 INFO  epoch 113 training [time: 0.36s, train loss: 10.4089]
+Thu 11 Jan 2024 17:36:42 INFO  epoch 113 evaluating [time: 0.24s, valid_score: 0.333100]
+Thu 11 Jan 2024 17:36:42 INFO  valid result: 
+recall@10 : 0.1748    mrr@10 : 0.3331    ndcg@10 : 0.1926    hit@10 : 0.667    precision@10 : 0.1336
+Thu 11 Jan 2024 17:36:43 INFO  epoch 114 training [time: 0.38s, train loss: 10.4148]
+Thu 11 Jan 2024 17:36:43 INFO  epoch 114 evaluating [time: 0.24s, valid_score: 0.333200]
+Thu 11 Jan 2024 17:36:43 INFO  valid result: 
+recall@10 : 0.1741    mrr@10 : 0.3332    ndcg@10 : 0.1923    hit@10 : 0.6649    precision@10 : 0.1333
+Thu 11 Jan 2024 17:36:43 INFO  epoch 115 training [time: 0.39s, train loss: 10.3395]
+Thu 11 Jan 2024 17:36:44 INFO  epoch 115 evaluating [time: 0.25s, valid_score: 0.333700]
+Thu 11 Jan 2024 17:36:44 INFO  valid result: 
+recall@10 : 0.1746    mrr@10 : 0.3337    ndcg@10 : 0.1928    hit@10 : 0.6691    precision@10 : 0.1335
+Thu 11 Jan 2024 17:36:44 INFO  epoch 116 training [time: 0.39s, train loss: 10.2679]
+Thu 11 Jan 2024 17:36:44 INFO  epoch 116 evaluating [time: 0.22s, valid_score: 0.334100]
+Thu 11 Jan 2024 17:36:44 INFO  valid result: 
+recall@10 : 0.1751    mrr@10 : 0.3341    ndcg@10 : 0.1933    hit@10 : 0.6713    precision@10 : 0.1344
+Thu 11 Jan 2024 17:36:45 INFO  epoch 117 training [time: 0.36s, train loss: 10.2655]
+Thu 11 Jan 2024 17:36:45 INFO  epoch 117 evaluating [time: 0.24s, valid_score: 0.335700]
+Thu 11 Jan 2024 17:36:45 INFO  valid result: 
+recall@10 : 0.1757    mrr@10 : 0.3357    ndcg@10 : 0.1939    hit@10 : 0.6713    precision@10 : 0.1344
+Thu 11 Jan 2024 17:36:45 INFO  epoch 118 training [time: 0.36s, train loss: 10.2517]
+Thu 11 Jan 2024 17:36:45 INFO  epoch 118 evaluating [time: 0.25s, valid_score: 0.334700]
+Thu 11 Jan 2024 17:36:45 INFO  valid result: 
+recall@10 : 0.1755    mrr@10 : 0.3347    ndcg@10 : 0.194    hit@10 : 0.6702    precision@10 : 0.1347
+Thu 11 Jan 2024 17:36:46 INFO  epoch 119 training [time: 0.36s, train loss: 10.2312]
+Thu 11 Jan 2024 17:36:46 INFO  epoch 119 evaluating [time: 0.20s, valid_score: 0.335400]
+Thu 11 Jan 2024 17:36:46 INFO  valid result: 
+recall@10 : 0.1754    mrr@10 : 0.3354    ndcg@10 : 0.1942    hit@10 : 0.6681    precision@10 : 0.1349
+Thu 11 Jan 2024 17:36:46 INFO  epoch 120 training [time: 0.41s, train loss: 10.0545]
+Thu 11 Jan 2024 17:36:47 INFO  epoch 120 evaluating [time: 0.24s, valid_score: 0.335600]
+Thu 11 Jan 2024 17:36:47 INFO  valid result: 
+recall@10 : 0.1761    mrr@10 : 0.3356    ndcg@10 : 0.1947    hit@10 : 0.6691    precision@10 : 0.1355
+Thu 11 Jan 2024 17:36:47 INFO  epoch 121 training [time: 0.38s, train loss: 10.1183]
+Thu 11 Jan 2024 17:36:47 INFO  epoch 121 evaluating [time: 0.25s, valid_score: 0.334400]
+Thu 11 Jan 2024 17:36:47 INFO  valid result: 
+recall@10 : 0.1769    mrr@10 : 0.3344    ndcg@10 : 0.1949    hit@10 : 0.6691    precision@10 : 0.1357
+Thu 11 Jan 2024 17:36:47 INFO  Finished training, best eval result in epoch 110
+Thu 11 Jan 2024 17:36:47 INFO  Loading model structure and parameters from saved\BPR-Jan-11-2024_17-35-30.pth
+Thu 11 Jan 2024 17:36:49 INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    3.50 %     |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.35 G/7.85 G |
++-------------+---------------+
+Thu 11 Jan 2024 17:36:49 INFO  best valid : OrderedDict([('recall@10', 0.1742), ('mrr@10', 0.3369), ('ndcg@10', 0.1928), ('hit@10', 0.6681), ('precision@10', 0.133)])
+Thu 11 Jan 2024 17:36:49 INFO  test result: OrderedDict([('recall@10', 0.197), ('mrr@10', 0.4199), ('ndcg@10', 0.2371), ('hit@10', 0.7041), ('precision@10', 0.1566)])

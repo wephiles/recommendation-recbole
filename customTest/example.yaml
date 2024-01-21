@@ -1,0 +1,60 @@
+gpu_id: 0
+training_batch_size: 1024
+embedding_size: 10
+input_type: interaction
+
+# 训练参数
+learning_rate: 0.001
+epochs: 200
+
+#train_batch_size: 2048
+valid_batch_size: 256
+test_batch_size: 256
+num_workers: 0
+
+# 评估参数
+eval_setting: TO_LS,full
+metrics: ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+valid_metric: MRR@10
+split_ratio: [ 0.7, 0.2, 0.1 ]
+
+# 其他设置
+seed: 2020
+logger: True
+
+dataset:
+  dataset: 'ml-1m'
+
+model:
+  model_name: NewModel  # 自定义模型的名称
+  model_parameters:
+    # 在这里添加自定义模型的参数配置
+    embedding_size: 64
+
+#trainer:
+#  name: 'NewTrainer'  # 自定义训练器的名称
+#  trainer_parameters: {}
+#
+#sampler:
+#  name: 'KGSampler'  # 自定义采样器的名称
+#  sampler_parameters:
+#    # 在这里添加自定义采样器的参数配置
+#    distribution: 'uniform'
+#
+#dataloader:
+#  name: 'MyDataLoader'  # 自定义dataloader的名称
+#  dataloader_parameters:
+#    # 在这里添加自定义dataloader的参数配置
+#    train_batch_size: 64  # 指定训练时的批大小
+#    valid_batch_size: 64  # 指定验证时的批大小
+#    test_batch_size: 64  # 指定测试时的批大小
+
+#metrics:  # 自定义指标
+#  'Hit'
+#  'NDCG'
+
+#metrics:
+#  - name: 'MyMetric'
+#    metric_parameters:
+#      param1: config
+##      param2: value2

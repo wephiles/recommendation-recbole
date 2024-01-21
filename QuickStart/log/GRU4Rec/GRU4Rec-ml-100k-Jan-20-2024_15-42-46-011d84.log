@@ -1,0 +1,174 @@
+Sat 20 Jan 2024 15:42:46 INFO  ['D:\\AllProjects\\PycharmProjects\\recommendationAlgorithms\\QuickStart\\run_sequence.py']
+Sat 20 Jan 2024 15:42:46 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\AllProjects\PycharmProjects\recommendationAlgorithms\.venv\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 500
+train_batch_size = 4096
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = True
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = MRR@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 64
+hidden_size = 128
+num_layers = 1
+dropout_prob = 0.3
+loss_type = CE
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.SEQUENTIAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Sat 20 Jan 2024 15:42:47 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'timestamp']
+Sat 20 Jan 2024 15:42:50 INFO  [Training]: train_batch_size = [4096] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Sat 20 Jan 2024 15:42:50 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Sat 20 Jan 2024 15:42:50 INFO  GRU4Rec(
+  (item_embedding): Embedding(1683, 64, padding_idx=0)
+  (emb_dropout): Dropout(p=0.3, inplace=False)
+  (gru_layers): GRU(64, 128, bias=False, batch_first=True)
+  (dense): Linear(in_features=128, out_features=64, bias=True)
+  (loss_fct): CrossEntropyLoss()
+)
+Trainable parameters: 189696
+Sat 20 Jan 2024 15:42:51 INFO  FLOPs: 4144064.0
+Sat 20 Jan 2024 15:44:17 INFO  epoch 0 training [time: 86.16s, train loss: 176.3325]
+Sat 20 Jan 2024 15:44:18 INFO  epoch 0 evaluating [time: 0.72s, valid_score: 0.007100]
+Sat 20 Jan 2024 15:44:18 INFO  valid result: 
+recall@10 : 0.0276    mrr@10 : 0.0071    ndcg@10 : 0.0119    hit@10 : 0.0276    precision@10 : 0.0028
+Sat 20 Jan 2024 15:44:18 INFO  Saving current: saved\GRU4Rec-Jan-20-2024_15-42-51.pth
+Sat 20 Jan 2024 15:45:38 INFO  epoch 1 training [time: 79.90s, train loss: 162.9981]
+Sat 20 Jan 2024 15:45:39 INFO  epoch 1 evaluating [time: 0.73s, valid_score: 0.010700]
+Sat 20 Jan 2024 15:45:39 INFO  valid result: 
+recall@10 : 0.0297    mrr@10 : 0.0107    ndcg@10 : 0.0151    hit@10 : 0.0297    precision@10 : 0.003
+Sat 20 Jan 2024 15:45:39 INFO  Saving current: saved\GRU4Rec-Jan-20-2024_15-42-51.pth
+Sat 20 Jan 2024 15:46:54 INFO  epoch 2 training [time: 74.76s, train loss: 160.5905]
+Sat 20 Jan 2024 15:46:54 INFO  epoch 2 evaluating [time: 0.14s, valid_score: 0.010400]
+Sat 20 Jan 2024 15:46:54 INFO  valid result: 
+recall@10 : 0.0318    mrr@10 : 0.0104    ndcg@10 : 0.0152    hit@10 : 0.0318    precision@10 : 0.0032
+Sat 20 Jan 2024 15:48:11 INFO  epoch 3 training [time: 76.40s, train loss: 160.1068]
+Sat 20 Jan 2024 15:48:11 INFO  epoch 3 evaluating [time: 0.14s, valid_score: 0.010900]
+Sat 20 Jan 2024 15:48:11 INFO  valid result: 
+recall@10 : 0.035    mrr@10 : 0.0109    ndcg@10 : 0.0164    hit@10 : 0.035    precision@10 : 0.0035
+Sat 20 Jan 2024 15:48:11 INFO  Saving current: saved\GRU4Rec-Jan-20-2024_15-42-51.pth
+Sat 20 Jan 2024 15:49:25 INFO  epoch 4 training [time: 74.70s, train loss: 159.8475]
+Sat 20 Jan 2024 15:49:26 INFO  epoch 4 evaluating [time: 0.14s, valid_score: 0.010000]
+Sat 20 Jan 2024 15:49:26 INFO  valid result: 
+recall@10 : 0.0265    mrr@10 : 0.01    ndcg@10 : 0.0138    hit@10 : 0.0265    precision@10 : 0.0027
+Sat 20 Jan 2024 15:50:41 INFO  epoch 5 training [time: 75.49s, train loss: 159.6087]
+Sat 20 Jan 2024 15:50:41 INFO  epoch 5 evaluating [time: 0.16s, valid_score: 0.010000]
+Sat 20 Jan 2024 15:50:41 INFO  valid result: 
+recall@10 : 0.0318    mrr@10 : 0.01    ndcg@10 : 0.015    hit@10 : 0.0318    precision@10 : 0.0032
+Sat 20 Jan 2024 15:51:57 INFO  epoch 6 training [time: 75.57s, train loss: 159.1756]
+Sat 20 Jan 2024 15:51:57 INFO  epoch 6 evaluating [time: 0.13s, valid_score: 0.009400]
+Sat 20 Jan 2024 15:51:57 INFO  valid result: 
+recall@10 : 0.035    mrr@10 : 0.0094    ndcg@10 : 0.0153    hit@10 : 0.035    precision@10 : 0.0035
+Sat 20 Jan 2024 15:53:13 INFO  epoch 7 training [time: 75.75s, train loss: 157.4054]
+Sat 20 Jan 2024 15:53:13 INFO  epoch 7 evaluating [time: 0.14s, valid_score: 0.020000]
+Sat 20 Jan 2024 15:53:13 INFO  valid result: 
+recall@10 : 0.0636    mrr@10 : 0.02    ndcg@10 : 0.03    hit@10 : 0.0636    precision@10 : 0.0064
+Sat 20 Jan 2024 15:53:13 INFO  Saving current: saved\GRU4Rec-Jan-20-2024_15-42-51.pth
+Sat 20 Jan 2024 15:54:28 INFO  epoch 8 training [time: 74.86s, train loss: 154.0243]
+Sat 20 Jan 2024 15:54:28 INFO  epoch 8 evaluating [time: 0.13s, valid_score: 0.022200]
+Sat 20 Jan 2024 15:54:28 INFO  valid result: 
+recall@10 : 0.0647    mrr@10 : 0.0222    ndcg@10 : 0.032    hit@10 : 0.0647    precision@10 : 0.0065
+Sat 20 Jan 2024 15:54:28 INFO  Saving current: saved\GRU4Rec-Jan-20-2024_15-42-51.pth
+Sat 20 Jan 2024 15:55:44 INFO  epoch 9 training [time: 75.97s, train loss: 150.6637]
+Sat 20 Jan 2024 15:55:44 INFO  epoch 9 evaluating [time: 0.14s, valid_score: 0.027300]
+Sat 20 Jan 2024 15:55:44 INFO  valid result: 
+recall@10 : 0.0806    mrr@10 : 0.0273    ndcg@10 : 0.0395    hit@10 : 0.0806    precision@10 : 0.0081
+Sat 20 Jan 2024 15:55:44 INFO  Saving current: saved\GRU4Rec-Jan-20-2024_15-42-51.pth
+Sat 20 Jan 2024 15:56:57 INFO  epoch 10 training [time: 72.62s, train loss: 148.3422]
+Sat 20 Jan 2024 15:56:57 INFO  epoch 10 evaluating [time: 0.12s, valid_score: 0.030400]
+Sat 20 Jan 2024 15:56:57 INFO  valid result: 
+recall@10 : 0.0774    mrr@10 : 0.0304    ndcg@10 : 0.0412    hit@10 : 0.0774    precision@10 : 0.0077
+Sat 20 Jan 2024 15:56:57 INFO  Saving current: saved\GRU4Rec-Jan-20-2024_15-42-51.pth
