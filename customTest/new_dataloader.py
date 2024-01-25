@@ -10,7 +10,9 @@
 
 import torch
 from recbole.data import AbstractDataLoader, Interaction
-from torch.utils.data import DataLoader
+from logging import getLogger
+
+from torch.utils.data import TensorDataset, DataLoader
 
 
 class MyDataLoader(AbstractDataLoader):
@@ -41,44 +43,16 @@ class MyDataLoader(AbstractDataLoader):
         self.pr += self.step
         return cur_data
 
-    def generate_train_loader(self):
-        train_dataset = self.dataset  # 直接使用 self.dataset 作为训练数据集
-        # num_workers = self.config.workers if hasattr(self.config, 'workers') else 0  # 获取 workers 参数，如果不存在则设置为 0
-        train_dataloader = DataLoader(
-            dataset=train_dataset,
-            batch_size=self.config.training_batch_size,
-            # shuffle=self.shuffle,
-            shuffle=False,
-            sampler=self.sampler,  # 直接将 RandomSampler 对象传递给 sampler 参数
-            num_workers=self.config.num_workers
-        )
+    def generate_train_loader(self, batch_size):
+        # 将数据转换为张量
+        data_tensor = torch.tensor(self.data)
 
-        return train_dataloader
+        # 创建数据集对象
+        dataset = TensorDataset(data_tensor)
 
-    def generate_valid_loader(self):
-        valid_dataset = self.dataset  # 直接使用 self.dataset 作为验证数据集
+        # 创建数据加载器对象
+        train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-        num_workers = self.config.workers if hasattr(self.config, 'workers') else 0  # 获取 workers 参数，如果不存在则设置为 0
-
-        valid_dataloader = DataLoader(
-            dataset=valid_dataset,
-            batch_size=self.config.valid_batch_size,
-            shuffle=False,  # 或根据需要设置为 True 或 False
-            num_workers=self.config.num_workers
-        )
-
-        return valid_dataloader
-
-    def generate_test_loader(self):
-        test_dataset = self.dataset  # 直接使用 self.dataset 作为测试数据集
-
-        test_dataloader = DataLoader(
-            dataset=test_dataset,
-            batch_size=self.config.test_batch_size,
-            shuffle=False,  # 或根据需要设置为 True 或 False
-            num_workers=self.config.num_workers
-        )
-
-        return test_dataloader
+        return train_loader
 
 # END

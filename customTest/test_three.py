@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
-# @CreateTime : 2024/1/13 013 13:56
+# @CreateTime : 2024/1/23 023 14:04
 # @Author : 瑾瑜@20866
 # @IDE : PyCharm
-# @File : recommendationAlgorithms/test_new_model.py
+# @File : recommendationAlgorithms/test_three.py
 # @Description : 
 # @Interpreter : python 3.10
 # @Motto : You must take your place in the circle of life!
 # @Site : https://github.com/wephiles or https://gitee.com/wephiles
-
-"""
-测试，
-测试新模型 new_model.py 里的 NewModel
-"""
 
 from logging import getLogger
 from recbole.utils import init_logger, init_seed
@@ -41,7 +36,6 @@ if __name__ == '__main__':
 
     # model loading and initialization
     model = NewModel(config, train_data.dataset).to(config['device'])
-    # model = NewModel(config, train_loader.dataset).to(config['device'])
     logger.info(model)
 
     # trainer loading and initialization
@@ -49,10 +43,8 @@ if __name__ == '__main__':
 
     # model training
     best_valid_score, best_valid_result = trainer.fit(train_data, valid_data)
-    # best_valid_score, best_valid_result = trainer.fit(train_loader, valid_loader)
 
     # model evaluation
-    # test_result = trainer.evaluate(test_loader)
     test_result = trainer.evaluate(test_data)
 
     logger.info('best valid result: {}'.format(best_valid_result))
