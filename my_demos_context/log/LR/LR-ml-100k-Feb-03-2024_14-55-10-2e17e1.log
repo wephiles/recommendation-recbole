@@ -1,0 +1,893 @@
+Sat 03 Feb 2024 14:55:10 INFO  ['run_recbole.py', '--model=LR', '--dataset=ml-100k', '--config_file=test.yaml']
+Sat 03 Feb 2024 14:55:10 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\PythonCompiler\python310\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+config_file = test.yaml
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': None, 'mode': {'valid': 'labeled', 'test': 'labeled'}}
+repeatable = False
+metrics = ['AUC', 'LogLoss']
+topk = [10]
+valid_metric = AUC
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = {'rating': 4}
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation'], 'item': ['item_id', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 10
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.CONTEXT
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.VALUE
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'none', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'none', 'sample_num': 'none'}
+
+
+Sat 03 Feb 2024 14:55:10 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'timestamp', 'age', 'gender', 'occupation', 'release_year', 'class', 'label']
+Sat 03 Feb 2024 14:55:12 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Sat 03 Feb 2024 14:55:12 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': None, 'mode': {'valid': 'labeled', 'test': 'labeled'}}]
+Sat 03 Feb 2024 14:55:12 INFO  LR(
+  (token_embedding_table): FMEmbedding(
+    (embedding): Embedding(2788, 10)
+  )
+  (token_seq_embedding_table): ModuleList(
+    (0): Embedding(20, 10)
+  )
+  (first_order_linear): FMFirstOrderLinear(
+    (token_embedding_table): FMEmbedding(
+      (embedding): Embedding(2788, 1)
+    )
+    (token_seq_embedding_table): ModuleList(
+      (0): Embedding(20, 1)
+    )
+  )
+  (sigmoid): Sigmoid()
+  (loss): BCEWithLogitsLoss()
+)
+Trainable parameters: 30889
+Sat 03 Feb 2024 14:55:13 INFO  FLOPs: 12.0
+Sat 03 Feb 2024 14:55:15 INFO  epoch 0 training [time: 0.99s, train loss: 28.4285]
+Sat 03 Feb 2024 14:55:15 INFO  epoch 0 evaluating [time: 0.09s, valid_score: 0.494000]
+Sat 03 Feb 2024 14:55:15 INFO  valid result: 
+auc : 0.494    logloss : 0.7005
+Sat 03 Feb 2024 14:55:15 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:15 INFO  epoch 1 training [time: 0.39s, train loss: 27.6943]
+Sat 03 Feb 2024 14:55:15 INFO  epoch 1 evaluating [time: 0.02s, valid_score: 0.544500]
+Sat 03 Feb 2024 14:55:15 INFO  valid result: 
+auc : 0.5445    logloss : 0.6865
+Sat 03 Feb 2024 14:55:15 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:16 INFO  epoch 2 training [time: 0.44s, train loss: 27.1416]
+Sat 03 Feb 2024 14:55:16 INFO  epoch 2 evaluating [time: 0.05s, valid_score: 0.597400]
+Sat 03 Feb 2024 14:55:16 INFO  valid result: 
+auc : 0.5974    logloss : 0.6748
+Sat 03 Feb 2024 14:55:16 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:16 INFO  epoch 3 training [time: 0.38s, train loss: 26.7065]
+Sat 03 Feb 2024 14:55:16 INFO  epoch 3 evaluating [time: 0.03s, valid_score: 0.641400]
+Sat 03 Feb 2024 14:55:16 INFO  valid result: 
+auc : 0.6414    logloss : 0.665
+Sat 03 Feb 2024 14:55:16 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:17 INFO  epoch 4 training [time: 0.43s, train loss: 26.3110]
+Sat 03 Feb 2024 14:55:17 INFO  epoch 4 evaluating [time: 0.03s, valid_score: 0.673300]
+Sat 03 Feb 2024 14:55:17 INFO  valid result: 
+auc : 0.6733    logloss : 0.6565
+Sat 03 Feb 2024 14:55:17 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:17 INFO  epoch 5 training [time: 0.40s, train loss: 25.9993]
+Sat 03 Feb 2024 14:55:17 INFO  epoch 5 evaluating [time: 0.03s, valid_score: 0.693900]
+Sat 03 Feb 2024 14:55:17 INFO  valid result: 
+auc : 0.6939    logloss : 0.649
+Sat 03 Feb 2024 14:55:17 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:17 INFO  epoch 6 training [time: 0.42s, train loss: 25.6768]
+Sat 03 Feb 2024 14:55:18 INFO  epoch 6 evaluating [time: 0.03s, valid_score: 0.707400]
+Sat 03 Feb 2024 14:55:18 INFO  valid result: 
+auc : 0.7074    logloss : 0.6426
+Sat 03 Feb 2024 14:55:18 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:18 INFO  epoch 7 training [time: 0.38s, train loss: 25.4459]
+Sat 03 Feb 2024 14:55:18 INFO  epoch 7 evaluating [time: 0.05s, valid_score: 0.716300]
+Sat 03 Feb 2024 14:55:18 INFO  valid result: 
+auc : 0.7163    logloss : 0.637
+Sat 03 Feb 2024 14:55:18 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:18 INFO  epoch 8 training [time: 0.38s, train loss: 25.1891]
+Sat 03 Feb 2024 14:55:18 INFO  epoch 8 evaluating [time: 0.02s, valid_score: 0.723000]
+Sat 03 Feb 2024 14:55:18 INFO  valid result: 
+auc : 0.723    logloss : 0.632
+Sat 03 Feb 2024 14:55:18 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:19 INFO  epoch 9 training [time: 0.43s, train loss: 25.0236]
+Sat 03 Feb 2024 14:55:19 INFO  epoch 9 evaluating [time: 0.03s, valid_score: 0.728000]
+Sat 03 Feb 2024 14:55:19 INFO  valid result: 
+auc : 0.728    logloss : 0.6276
+Sat 03 Feb 2024 14:55:19 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:19 INFO  epoch 10 training [time: 0.46s, train loss: 24.8148]
+Sat 03 Feb 2024 14:55:19 INFO  epoch 10 evaluating [time: 0.03s, valid_score: 0.731700]
+Sat 03 Feb 2024 14:55:19 INFO  valid result: 
+auc : 0.7317    logloss : 0.6237
+Sat 03 Feb 2024 14:55:19 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:20 INFO  epoch 11 training [time: 0.38s, train loss: 24.6716]
+Sat 03 Feb 2024 14:55:20 INFO  epoch 11 evaluating [time: 0.02s, valid_score: 0.734800]
+Sat 03 Feb 2024 14:55:20 INFO  valid result: 
+auc : 0.7348    logloss : 0.6202
+Sat 03 Feb 2024 14:55:20 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:20 INFO  epoch 12 training [time: 0.38s, train loss: 24.5197]
+Sat 03 Feb 2024 14:55:20 INFO  epoch 12 evaluating [time: 0.03s, valid_score: 0.737700]
+Sat 03 Feb 2024 14:55:20 INFO  valid result: 
+auc : 0.7377    logloss : 0.6169
+Sat 03 Feb 2024 14:55:20 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:21 INFO  epoch 13 training [time: 0.41s, train loss: 24.4191]
+Sat 03 Feb 2024 14:55:21 INFO  epoch 13 evaluating [time: 0.02s, valid_score: 0.739900]
+Sat 03 Feb 2024 14:55:21 INFO  valid result: 
+auc : 0.7399    logloss : 0.614
+Sat 03 Feb 2024 14:55:21 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:21 INFO  epoch 14 training [time: 0.38s, train loss: 24.2682]
+Sat 03 Feb 2024 14:55:21 INFO  epoch 14 evaluating [time: 0.03s, valid_score: 0.742100]
+Sat 03 Feb 2024 14:55:21 INFO  valid result: 
+auc : 0.7421    logloss : 0.6113
+Sat 03 Feb 2024 14:55:21 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:21 INFO  epoch 15 training [time: 0.43s, train loss: 24.1231]
+Sat 03 Feb 2024 14:55:22 INFO  epoch 15 evaluating [time: 0.05s, valid_score: 0.744000]
+Sat 03 Feb 2024 14:55:22 INFO  valid result: 
+auc : 0.744    logloss : 0.6089
+Sat 03 Feb 2024 14:55:22 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:22 INFO  epoch 16 training [time: 0.40s, train loss: 24.0402]
+Sat 03 Feb 2024 14:55:22 INFO  epoch 16 evaluating [time: 0.03s, valid_score: 0.745700]
+Sat 03 Feb 2024 14:55:22 INFO  valid result: 
+auc : 0.7457    logloss : 0.6066
+Sat 03 Feb 2024 14:55:22 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:22 INFO  epoch 17 training [time: 0.40s, train loss: 23.9502]
+Sat 03 Feb 2024 14:55:22 INFO  epoch 17 evaluating [time: 0.03s, valid_score: 0.747300]
+Sat 03 Feb 2024 14:55:22 INFO  valid result: 
+auc : 0.7473    logloss : 0.6044
+Sat 03 Feb 2024 14:55:22 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:23 INFO  epoch 18 training [time: 0.43s, train loss: 23.8796]
+Sat 03 Feb 2024 14:55:23 INFO  epoch 18 evaluating [time: 0.05s, valid_score: 0.748800]
+Sat 03 Feb 2024 14:55:23 INFO  valid result: 
+auc : 0.7488    logloss : 0.6024
+Sat 03 Feb 2024 14:55:23 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:23 INFO  epoch 19 training [time: 0.39s, train loss: 23.7531]
+Sat 03 Feb 2024 14:55:23 INFO  epoch 19 evaluating [time: 0.03s, valid_score: 0.750200]
+Sat 03 Feb 2024 14:55:23 INFO  valid result: 
+auc : 0.7502    logloss : 0.6006
+Sat 03 Feb 2024 14:55:23 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:24 INFO  epoch 20 training [time: 0.38s, train loss: 23.6762]
+Sat 03 Feb 2024 14:55:24 INFO  epoch 20 evaluating [time: 0.03s, valid_score: 0.751600]
+Sat 03 Feb 2024 14:55:24 INFO  valid result: 
+auc : 0.7516    logloss : 0.5988
+Sat 03 Feb 2024 14:55:24 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:24 INFO  epoch 21 training [time: 0.41s, train loss: 23.5813]
+Sat 03 Feb 2024 14:55:24 INFO  epoch 21 evaluating [time: 0.03s, valid_score: 0.752800]
+Sat 03 Feb 2024 14:55:24 INFO  valid result: 
+auc : 0.7528    logloss : 0.5972
+Sat 03 Feb 2024 14:55:24 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:25 INFO  epoch 22 training [time: 0.42s, train loss: 23.5320]
+Sat 03 Feb 2024 14:55:25 INFO  epoch 22 evaluating [time: 0.05s, valid_score: 0.753900]
+Sat 03 Feb 2024 14:55:25 INFO  valid result: 
+auc : 0.7539    logloss : 0.5957
+Sat 03 Feb 2024 14:55:25 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:25 INFO  epoch 23 training [time: 0.43s, train loss: 23.4429]
+Sat 03 Feb 2024 14:55:25 INFO  epoch 23 evaluating [time: 0.03s, valid_score: 0.755000]
+Sat 03 Feb 2024 14:55:25 INFO  valid result: 
+auc : 0.755    logloss : 0.5942
+Sat 03 Feb 2024 14:55:25 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:25 INFO  epoch 24 training [time: 0.39s, train loss: 23.3391]
+Sat 03 Feb 2024 14:55:26 INFO  epoch 24 evaluating [time: 0.03s, valid_score: 0.756000]
+Sat 03 Feb 2024 14:55:26 INFO  valid result: 
+auc : 0.756    logloss : 0.5928
+Sat 03 Feb 2024 14:55:26 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:26 INFO  epoch 25 training [time: 0.39s, train loss: 23.3000]
+Sat 03 Feb 2024 14:55:26 INFO  epoch 25 evaluating [time: 0.03s, valid_score: 0.756900]
+Sat 03 Feb 2024 14:55:26 INFO  valid result: 
+auc : 0.7569    logloss : 0.5916
+Sat 03 Feb 2024 14:55:26 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:26 INFO  epoch 26 training [time: 0.38s, train loss: 23.2533]
+Sat 03 Feb 2024 14:55:26 INFO  epoch 26 evaluating [time: 0.02s, valid_score: 0.757700]
+Sat 03 Feb 2024 14:55:26 INFO  valid result: 
+auc : 0.7577    logloss : 0.5903
+Sat 03 Feb 2024 14:55:26 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:27 INFO  epoch 27 training [time: 0.39s, train loss: 23.2004]
+Sat 03 Feb 2024 14:55:27 INFO  epoch 27 evaluating [time: 0.03s, valid_score: 0.758700]
+Sat 03 Feb 2024 14:55:27 INFO  valid result: 
+auc : 0.7587    logloss : 0.5891
+Sat 03 Feb 2024 14:55:27 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:27 INFO  epoch 28 training [time: 0.43s, train loss: 23.1478]
+Sat 03 Feb 2024 14:55:27 INFO  epoch 28 evaluating [time: 0.02s, valid_score: 0.759400]
+Sat 03 Feb 2024 14:55:27 INFO  valid result: 
+auc : 0.7594    logloss : 0.588
+Sat 03 Feb 2024 14:55:27 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:28 INFO  epoch 29 training [time: 0.40s, train loss: 23.0789]
+Sat 03 Feb 2024 14:55:28 INFO  epoch 29 evaluating [time: 0.03s, valid_score: 0.760000]
+Sat 03 Feb 2024 14:55:28 INFO  valid result: 
+auc : 0.76    logloss : 0.587
+Sat 03 Feb 2024 14:55:28 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:28 INFO  epoch 30 training [time: 0.44s, train loss: 23.0280]
+Sat 03 Feb 2024 14:55:28 INFO  epoch 30 evaluating [time: 0.03s, valid_score: 0.760800]
+Sat 03 Feb 2024 14:55:28 INFO  valid result: 
+auc : 0.7608    logloss : 0.586
+Sat 03 Feb 2024 14:55:28 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:29 INFO  epoch 31 training [time: 0.40s, train loss: 23.0035]
+Sat 03 Feb 2024 14:55:29 INFO  epoch 31 evaluating [time: 0.02s, valid_score: 0.761500]
+Sat 03 Feb 2024 14:55:29 INFO  valid result: 
+auc : 0.7615    logloss : 0.585
+Sat 03 Feb 2024 14:55:29 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:29 INFO  epoch 32 training [time: 0.41s, train loss: 22.9686]
+Sat 03 Feb 2024 14:55:29 INFO  epoch 32 evaluating [time: 0.03s, valid_score: 0.762100]
+Sat 03 Feb 2024 14:55:29 INFO  valid result: 
+auc : 0.7621    logloss : 0.5841
+Sat 03 Feb 2024 14:55:29 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:30 INFO  epoch 33 training [time: 0.42s, train loss: 22.9372]
+Sat 03 Feb 2024 14:55:30 INFO  epoch 33 evaluating [time: 0.03s, valid_score: 0.762700]
+Sat 03 Feb 2024 14:55:30 INFO  valid result: 
+auc : 0.7627    logloss : 0.5832
+Sat 03 Feb 2024 14:55:30 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:30 INFO  epoch 34 training [time: 0.45s, train loss: 22.8717]
+Sat 03 Feb 2024 14:55:30 INFO  epoch 34 evaluating [time: 0.04s, valid_score: 0.763300]
+Sat 03 Feb 2024 14:55:30 INFO  valid result: 
+auc : 0.7633    logloss : 0.5823
+Sat 03 Feb 2024 14:55:30 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:30 INFO  epoch 35 training [time: 0.39s, train loss: 22.8348]
+Sat 03 Feb 2024 14:55:31 INFO  epoch 35 evaluating [time: 0.03s, valid_score: 0.764000]
+Sat 03 Feb 2024 14:55:31 INFO  valid result: 
+auc : 0.764    logloss : 0.5815
+Sat 03 Feb 2024 14:55:31 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:31 INFO  epoch 36 training [time: 0.44s, train loss: 22.7269]
+Sat 03 Feb 2024 14:55:31 INFO  epoch 36 evaluating [time: 0.03s, valid_score: 0.764500]
+Sat 03 Feb 2024 14:55:31 INFO  valid result: 
+auc : 0.7645    logloss : 0.5807
+Sat 03 Feb 2024 14:55:31 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:31 INFO  epoch 37 training [time: 0.43s, train loss: 22.7342]
+Sat 03 Feb 2024 14:55:31 INFO  epoch 37 evaluating [time: 0.05s, valid_score: 0.765000]
+Sat 03 Feb 2024 14:55:31 INFO  valid result: 
+auc : 0.765    logloss : 0.5799
+Sat 03 Feb 2024 14:55:31 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:32 INFO  epoch 38 training [time: 0.39s, train loss: 22.7288]
+Sat 03 Feb 2024 14:55:32 INFO  epoch 38 evaluating [time: 0.05s, valid_score: 0.765400]
+Sat 03 Feb 2024 14:55:32 INFO  valid result: 
+auc : 0.7654    logloss : 0.5793
+Sat 03 Feb 2024 14:55:32 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:32 INFO  epoch 39 training [time: 0.44s, train loss: 22.6388]
+Sat 03 Feb 2024 14:55:32 INFO  epoch 39 evaluating [time: 0.05s, valid_score: 0.765800]
+Sat 03 Feb 2024 14:55:32 INFO  valid result: 
+auc : 0.7658    logloss : 0.5786
+Sat 03 Feb 2024 14:55:32 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:33 INFO  epoch 40 training [time: 0.40s, train loss: 22.6191]
+Sat 03 Feb 2024 14:55:33 INFO  epoch 40 evaluating [time: 0.03s, valid_score: 0.766200]
+Sat 03 Feb 2024 14:55:33 INFO  valid result: 
+auc : 0.7662    logloss : 0.5779
+Sat 03 Feb 2024 14:55:33 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:33 INFO  epoch 41 training [time: 0.45s, train loss: 22.5770]
+Sat 03 Feb 2024 14:55:33 INFO  epoch 41 evaluating [time: 0.05s, valid_score: 0.766500]
+Sat 03 Feb 2024 14:55:33 INFO  valid result: 
+auc : 0.7665    logloss : 0.5774
+Sat 03 Feb 2024 14:55:33 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:34 INFO  epoch 42 training [time: 0.42s, train loss: 22.5416]
+Sat 03 Feb 2024 14:55:34 INFO  epoch 42 evaluating [time: 0.04s, valid_score: 0.766900]
+Sat 03 Feb 2024 14:55:34 INFO  valid result: 
+auc : 0.7669    logloss : 0.5768
+Sat 03 Feb 2024 14:55:34 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:34 INFO  epoch 43 training [time: 0.46s, train loss: 22.5502]
+Sat 03 Feb 2024 14:55:34 INFO  epoch 43 evaluating [time: 0.02s, valid_score: 0.767100]
+Sat 03 Feb 2024 14:55:34 INFO  valid result: 
+auc : 0.7671    logloss : 0.5763
+Sat 03 Feb 2024 14:55:34 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:35 INFO  epoch 44 training [time: 0.44s, train loss: 22.5355]
+Sat 03 Feb 2024 14:55:35 INFO  epoch 44 evaluating [time: 0.02s, valid_score: 0.767400]
+Sat 03 Feb 2024 14:55:35 INFO  valid result: 
+auc : 0.7674    logloss : 0.5758
+Sat 03 Feb 2024 14:55:35 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:35 INFO  epoch 45 training [time: 0.41s, train loss: 22.4646]
+Sat 03 Feb 2024 14:55:35 INFO  epoch 45 evaluating [time: 0.05s, valid_score: 0.767800]
+Sat 03 Feb 2024 14:55:35 INFO  valid result: 
+auc : 0.7678    logloss : 0.5752
+Sat 03 Feb 2024 14:55:35 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:36 INFO  epoch 46 training [time: 0.41s, train loss: 22.4319]
+Sat 03 Feb 2024 14:55:36 INFO  epoch 46 evaluating [time: 0.02s, valid_score: 0.768100]
+Sat 03 Feb 2024 14:55:36 INFO  valid result: 
+auc : 0.7681    logloss : 0.5747
+Sat 03 Feb 2024 14:55:36 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:36 INFO  epoch 47 training [time: 0.40s, train loss: 22.4491]
+Sat 03 Feb 2024 14:55:36 INFO  epoch 47 evaluating [time: 0.03s, valid_score: 0.768400]
+Sat 03 Feb 2024 14:55:36 INFO  valid result: 
+auc : 0.7684    logloss : 0.5743
+Sat 03 Feb 2024 14:55:36 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:37 INFO  epoch 48 training [time: 0.43s, train loss: 22.3456]
+Sat 03 Feb 2024 14:55:37 INFO  epoch 48 evaluating [time: 0.03s, valid_score: 0.768600]
+Sat 03 Feb 2024 14:55:37 INFO  valid result: 
+auc : 0.7686    logloss : 0.5739
+Sat 03 Feb 2024 14:55:37 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:37 INFO  epoch 49 training [time: 0.42s, train loss: 22.3515]
+Sat 03 Feb 2024 14:55:37 INFO  epoch 49 evaluating [time: 0.03s, valid_score: 0.768900]
+Sat 03 Feb 2024 14:55:37 INFO  valid result: 
+auc : 0.7689    logloss : 0.5734
+Sat 03 Feb 2024 14:55:37 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:37 INFO  epoch 50 training [time: 0.43s, train loss: 22.3295]
+Sat 03 Feb 2024 14:55:37 INFO  epoch 50 evaluating [time: 0.02s, valid_score: 0.769300]
+Sat 03 Feb 2024 14:55:37 INFO  valid result: 
+auc : 0.7693    logloss : 0.5729
+Sat 03 Feb 2024 14:55:37 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:38 INFO  epoch 51 training [time: 0.44s, train loss: 22.2944]
+Sat 03 Feb 2024 14:55:38 INFO  epoch 51 evaluating [time: 0.03s, valid_score: 0.769500]
+Sat 03 Feb 2024 14:55:38 INFO  valid result: 
+auc : 0.7695    logloss : 0.5725
+Sat 03 Feb 2024 14:55:38 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:38 INFO  epoch 52 training [time: 0.42s, train loss: 22.3100]
+Sat 03 Feb 2024 14:55:38 INFO  epoch 52 evaluating [time: 0.03s, valid_score: 0.769700]
+Sat 03 Feb 2024 14:55:38 INFO  valid result: 
+auc : 0.7697    logloss : 0.5721
+Sat 03 Feb 2024 14:55:38 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:39 INFO  epoch 53 training [time: 0.45s, train loss: 22.2139]
+Sat 03 Feb 2024 14:55:39 INFO  epoch 53 evaluating [time: 0.03s, valid_score: 0.769800]
+Sat 03 Feb 2024 14:55:39 INFO  valid result: 
+auc : 0.7698    logloss : 0.5719
+Sat 03 Feb 2024 14:55:39 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:39 INFO  epoch 54 training [time: 0.40s, train loss: 22.2523]
+Sat 03 Feb 2024 14:55:39 INFO  epoch 54 evaluating [time: 0.03s, valid_score: 0.770000]
+Sat 03 Feb 2024 14:55:39 INFO  valid result: 
+auc : 0.77    logloss : 0.5715
+Sat 03 Feb 2024 14:55:39 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:40 INFO  epoch 55 training [time: 0.41s, train loss: 22.2085]
+Sat 03 Feb 2024 14:55:40 INFO  epoch 55 evaluating [time: 0.03s, valid_score: 0.770200]
+Sat 03 Feb 2024 14:55:40 INFO  valid result: 
+auc : 0.7702    logloss : 0.5712
+Sat 03 Feb 2024 14:55:40 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:40 INFO  epoch 56 training [time: 0.41s, train loss: 22.2011]
+Sat 03 Feb 2024 14:55:40 INFO  epoch 56 evaluating [time: 0.05s, valid_score: 0.770300]
+Sat 03 Feb 2024 14:55:40 INFO  valid result: 
+auc : 0.7703    logloss : 0.5709
+Sat 03 Feb 2024 14:55:40 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:41 INFO  epoch 57 training [time: 0.41s, train loss: 22.2243]
+Sat 03 Feb 2024 14:55:41 INFO  epoch 57 evaluating [time: 0.03s, valid_score: 0.770500]
+Sat 03 Feb 2024 14:55:41 INFO  valid result: 
+auc : 0.7705    logloss : 0.5705
+Sat 03 Feb 2024 14:55:41 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:41 INFO  epoch 58 training [time: 0.43s, train loss: 22.1799]
+Sat 03 Feb 2024 14:55:41 INFO  epoch 58 evaluating [time: 0.05s, valid_score: 0.770800]
+Sat 03 Feb 2024 14:55:41 INFO  valid result: 
+auc : 0.7708    logloss : 0.5702
+Sat 03 Feb 2024 14:55:41 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:42 INFO  epoch 59 training [time: 0.39s, train loss: 22.1517]
+Sat 03 Feb 2024 14:55:42 INFO  epoch 59 evaluating [time: 0.03s, valid_score: 0.770900]
+Sat 03 Feb 2024 14:55:42 INFO  valid result: 
+auc : 0.7709    logloss : 0.5699
+Sat 03 Feb 2024 14:55:42 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:42 INFO  epoch 60 training [time: 0.41s, train loss: 22.1620]
+Sat 03 Feb 2024 14:55:42 INFO  epoch 60 evaluating [time: 0.03s, valid_score: 0.771100]
+Sat 03 Feb 2024 14:55:42 INFO  valid result: 
+auc : 0.7711    logloss : 0.5696
+Sat 03 Feb 2024 14:55:42 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:42 INFO  epoch 61 training [time: 0.39s, train loss: 22.0861]
+Sat 03 Feb 2024 14:55:42 INFO  epoch 61 evaluating [time: 0.05s, valid_score: 0.771300]
+Sat 03 Feb 2024 14:55:42 INFO  valid result: 
+auc : 0.7713    logloss : 0.5693
+Sat 03 Feb 2024 14:55:42 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:43 INFO  epoch 62 training [time: 0.40s, train loss: 22.1070]
+Sat 03 Feb 2024 14:55:43 INFO  epoch 62 evaluating [time: 0.03s, valid_score: 0.771500]
+Sat 03 Feb 2024 14:55:43 INFO  valid result: 
+auc : 0.7715    logloss : 0.569
+Sat 03 Feb 2024 14:55:43 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:43 INFO  epoch 63 training [time: 0.44s, train loss: 22.0734]
+Sat 03 Feb 2024 14:55:43 INFO  epoch 63 evaluating [time: 0.03s, valid_score: 0.771600]
+Sat 03 Feb 2024 14:55:43 INFO  valid result: 
+auc : 0.7716    logloss : 0.5688
+Sat 03 Feb 2024 14:55:43 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:44 INFO  epoch 64 training [time: 0.45s, train loss: 21.9982]
+Sat 03 Feb 2024 14:55:44 INFO  epoch 64 evaluating [time: 0.04s, valid_score: 0.771700]
+Sat 03 Feb 2024 14:55:44 INFO  valid result: 
+auc : 0.7717    logloss : 0.5686
+Sat 03 Feb 2024 14:55:44 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:44 INFO  epoch 65 training [time: 0.43s, train loss: 22.0910]
+Sat 03 Feb 2024 14:55:44 INFO  epoch 65 evaluating [time: 0.03s, valid_score: 0.771800]
+Sat 03 Feb 2024 14:55:44 INFO  valid result: 
+auc : 0.7718    logloss : 0.5684
+Sat 03 Feb 2024 14:55:44 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:45 INFO  epoch 66 training [time: 0.46s, train loss: 21.9982]
+Sat 03 Feb 2024 14:55:45 INFO  epoch 66 evaluating [time: 0.04s, valid_score: 0.771900]
+Sat 03 Feb 2024 14:55:45 INFO  valid result: 
+auc : 0.7719    logloss : 0.5682
+Sat 03 Feb 2024 14:55:45 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:45 INFO  epoch 67 training [time: 0.45s, train loss: 22.0124]
+Sat 03 Feb 2024 14:55:45 INFO  epoch 67 evaluating [time: 0.02s, valid_score: 0.772000]
+Sat 03 Feb 2024 14:55:45 INFO  valid result: 
+auc : 0.772    logloss : 0.568
+Sat 03 Feb 2024 14:55:45 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:46 INFO  epoch 68 training [time: 0.40s, train loss: 22.0278]
+Sat 03 Feb 2024 14:55:46 INFO  epoch 68 evaluating [time: 0.03s, valid_score: 0.772000]
+Sat 03 Feb 2024 14:55:46 INFO  valid result: 
+auc : 0.772    logloss : 0.5679
+Sat 03 Feb 2024 14:55:46 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:46 INFO  epoch 69 training [time: 0.45s, train loss: 21.9704]
+Sat 03 Feb 2024 14:55:46 INFO  epoch 69 evaluating [time: 0.03s, valid_score: 0.772200]
+Sat 03 Feb 2024 14:55:46 INFO  valid result: 
+auc : 0.7722    logloss : 0.5677
+Sat 03 Feb 2024 14:55:46 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:47 INFO  epoch 70 training [time: 0.44s, train loss: 22.0039]
+Sat 03 Feb 2024 14:55:47 INFO  epoch 70 evaluating [time: 0.03s, valid_score: 0.772300]
+Sat 03 Feb 2024 14:55:47 INFO  valid result: 
+auc : 0.7723    logloss : 0.5675
+Sat 03 Feb 2024 14:55:47 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:47 INFO  epoch 71 training [time: 0.43s, train loss: 22.0024]
+Sat 03 Feb 2024 14:55:47 INFO  epoch 71 evaluating [time: 0.04s, valid_score: 0.772300]
+Sat 03 Feb 2024 14:55:47 INFO  valid result: 
+auc : 0.7723    logloss : 0.5674
+Sat 03 Feb 2024 14:55:47 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:48 INFO  epoch 72 training [time: 0.46s, train loss: 21.8893]
+Sat 03 Feb 2024 14:55:48 INFO  epoch 72 evaluating [time: 0.03s, valid_score: 0.772400]
+Sat 03 Feb 2024 14:55:48 INFO  valid result: 
+auc : 0.7724    logloss : 0.5672
+Sat 03 Feb 2024 14:55:48 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:48 INFO  epoch 73 training [time: 0.46s, train loss: 21.9201]
+Sat 03 Feb 2024 14:55:48 INFO  epoch 73 evaluating [time: 0.03s, valid_score: 0.772600]
+Sat 03 Feb 2024 14:55:48 INFO  valid result: 
+auc : 0.7726    logloss : 0.567
+Sat 03 Feb 2024 14:55:48 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:49 INFO  epoch 74 training [time: 0.43s, train loss: 21.9246]
+Sat 03 Feb 2024 14:55:49 INFO  epoch 74 evaluating [time: 0.02s, valid_score: 0.772600]
+Sat 03 Feb 2024 14:55:49 INFO  valid result: 
+auc : 0.7726    logloss : 0.5669
+Sat 03 Feb 2024 14:55:49 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:49 INFO  epoch 75 training [time: 0.41s, train loss: 21.9382]
+Sat 03 Feb 2024 14:55:49 INFO  epoch 75 evaluating [time: 0.03s, valid_score: 0.772600]
+Sat 03 Feb 2024 14:55:49 INFO  valid result: 
+auc : 0.7726    logloss : 0.5668
+Sat 03 Feb 2024 14:55:49 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:50 INFO  epoch 76 training [time: 0.41s, train loss: 21.8909]
+Sat 03 Feb 2024 14:55:50 INFO  epoch 76 evaluating [time: 0.04s, valid_score: 0.772700]
+Sat 03 Feb 2024 14:55:50 INFO  valid result: 
+auc : 0.7727    logloss : 0.5667
+Sat 03 Feb 2024 14:55:50 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:50 INFO  epoch 77 training [time: 0.44s, train loss: 21.8150]
+Sat 03 Feb 2024 14:55:50 INFO  epoch 77 evaluating [time: 0.03s, valid_score: 0.772800]
+Sat 03 Feb 2024 14:55:50 INFO  valid result: 
+auc : 0.7728    logloss : 0.5666
+Sat 03 Feb 2024 14:55:50 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:50 INFO  epoch 78 training [time: 0.40s, train loss: 21.8915]
+Sat 03 Feb 2024 14:55:50 INFO  epoch 78 evaluating [time: 0.05s, valid_score: 0.772900]
+Sat 03 Feb 2024 14:55:50 INFO  valid result: 
+auc : 0.7729    logloss : 0.5664
+Sat 03 Feb 2024 14:55:50 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:51 INFO  epoch 79 training [time: 0.44s, train loss: 21.8032]
+Sat 03 Feb 2024 14:55:51 INFO  epoch 79 evaluating [time: 0.03s, valid_score: 0.772900]
+Sat 03 Feb 2024 14:55:51 INFO  valid result: 
+auc : 0.7729    logloss : 0.5664
+Sat 03 Feb 2024 14:55:51 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:51 INFO  epoch 80 training [time: 0.43s, train loss: 21.7881]
+Sat 03 Feb 2024 14:55:51 INFO  epoch 80 evaluating [time: 0.03s, valid_score: 0.773000]
+Sat 03 Feb 2024 14:55:51 INFO  valid result: 
+auc : 0.773    logloss : 0.5662
+Sat 03 Feb 2024 14:55:51 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:52 INFO  epoch 81 training [time: 0.43s, train loss: 21.8653]
+Sat 03 Feb 2024 14:55:52 INFO  epoch 81 evaluating [time: 0.03s, valid_score: 0.773000]
+Sat 03 Feb 2024 14:55:52 INFO  valid result: 
+auc : 0.773    logloss : 0.5661
+Sat 03 Feb 2024 14:55:52 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:52 INFO  epoch 82 training [time: 0.43s, train loss: 21.8046]
+Sat 03 Feb 2024 14:55:52 INFO  epoch 82 evaluating [time: 0.05s, valid_score: 0.773100]
+Sat 03 Feb 2024 14:55:52 INFO  valid result: 
+auc : 0.7731    logloss : 0.5661
+Sat 03 Feb 2024 14:55:52 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:53 INFO  epoch 83 training [time: 0.43s, train loss: 21.7815]
+Sat 03 Feb 2024 14:55:53 INFO  epoch 83 evaluating [time: 0.03s, valid_score: 0.773200]
+Sat 03 Feb 2024 14:55:53 INFO  valid result: 
+auc : 0.7732    logloss : 0.5659
+Sat 03 Feb 2024 14:55:53 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:53 INFO  epoch 84 training [time: 0.50s, train loss: 21.8095]
+Sat 03 Feb 2024 14:55:53 INFO  epoch 84 evaluating [time: 0.07s, valid_score: 0.773300]
+Sat 03 Feb 2024 14:55:53 INFO  valid result: 
+auc : 0.7733    logloss : 0.5658
+Sat 03 Feb 2024 14:55:53 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:54 INFO  epoch 85 training [time: 0.53s, train loss: 21.8351]
+Sat 03 Feb 2024 14:55:54 INFO  epoch 85 evaluating [time: 0.03s, valid_score: 0.773400]
+Sat 03 Feb 2024 14:55:54 INFO  valid result: 
+auc : 0.7734    logloss : 0.5656
+Sat 03 Feb 2024 14:55:54 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:54 INFO  epoch 86 training [time: 0.49s, train loss: 21.8364]
+Sat 03 Feb 2024 14:55:55 INFO  epoch 86 evaluating [time: 0.03s, valid_score: 0.773400]
+Sat 03 Feb 2024 14:55:55 INFO  valid result: 
+auc : 0.7734    logloss : 0.5656
+Sat 03 Feb 2024 14:55:55 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:55 INFO  epoch 87 training [time: 0.60s, train loss: 21.8206]
+Sat 03 Feb 2024 14:55:55 INFO  epoch 87 evaluating [time: 0.05s, valid_score: 0.773400]
+Sat 03 Feb 2024 14:55:55 INFO  valid result: 
+auc : 0.7734    logloss : 0.5655
+Sat 03 Feb 2024 14:55:55 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:56 INFO  epoch 88 training [time: 0.50s, train loss: 21.8000]
+Sat 03 Feb 2024 14:55:56 INFO  epoch 88 evaluating [time: 0.03s, valid_score: 0.773500]
+Sat 03 Feb 2024 14:55:56 INFO  valid result: 
+auc : 0.7735    logloss : 0.5654
+Sat 03 Feb 2024 14:55:56 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:56 INFO  epoch 89 training [time: 0.43s, train loss: 21.7838]
+Sat 03 Feb 2024 14:55:56 INFO  epoch 89 evaluating [time: 0.03s, valid_score: 0.773500]
+Sat 03 Feb 2024 14:55:56 INFO  valid result: 
+auc : 0.7735    logloss : 0.5653
+Sat 03 Feb 2024 14:55:56 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:57 INFO  epoch 90 training [time: 0.43s, train loss: 21.7480]
+Sat 03 Feb 2024 14:55:57 INFO  epoch 90 evaluating [time: 0.03s, valid_score: 0.773600]
+Sat 03 Feb 2024 14:55:57 INFO  valid result: 
+auc : 0.7736    logloss : 0.5653
+Sat 03 Feb 2024 14:55:57 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:57 INFO  epoch 91 training [time: 0.47s, train loss: 21.7351]
+Sat 03 Feb 2024 14:55:57 INFO  epoch 91 evaluating [time: 0.03s, valid_score: 0.773600]
+Sat 03 Feb 2024 14:55:57 INFO  valid result: 
+auc : 0.7736    logloss : 0.5653
+Sat 03 Feb 2024 14:55:57 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:58 INFO  epoch 92 training [time: 0.42s, train loss: 21.7054]
+Sat 03 Feb 2024 14:55:58 INFO  epoch 92 evaluating [time: 0.02s, valid_score: 0.773700]
+Sat 03 Feb 2024 14:55:58 INFO  valid result: 
+auc : 0.7737    logloss : 0.5651
+Sat 03 Feb 2024 14:55:58 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:58 INFO  epoch 93 training [time: 0.46s, train loss: 21.7232]
+Sat 03 Feb 2024 14:55:58 INFO  epoch 93 evaluating [time: 0.03s, valid_score: 0.773800]
+Sat 03 Feb 2024 14:55:58 INFO  valid result: 
+auc : 0.7738    logloss : 0.5651
+Sat 03 Feb 2024 14:55:58 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:55:59 INFO  epoch 94 training [time: 0.46s, train loss: 21.7182]
+Sat 03 Feb 2024 14:55:59 INFO  epoch 94 evaluating [time: 0.02s, valid_score: 0.773700]
+Sat 03 Feb 2024 14:55:59 INFO  valid result: 
+auc : 0.7737    logloss : 0.5651
+Sat 03 Feb 2024 14:55:59 INFO  epoch 95 training [time: 0.44s, train loss: 21.7380]
+Sat 03 Feb 2024 14:55:59 INFO  epoch 95 evaluating [time: 0.03s, valid_score: 0.773700]
+Sat 03 Feb 2024 14:55:59 INFO  valid result: 
+auc : 0.7737    logloss : 0.565
+Sat 03 Feb 2024 14:55:59 INFO  epoch 96 training [time: 0.41s, train loss: 21.6949]
+Sat 03 Feb 2024 14:55:59 INFO  epoch 96 evaluating [time: 0.03s, valid_score: 0.773800]
+Sat 03 Feb 2024 14:55:59 INFO  valid result: 
+auc : 0.7738    logloss : 0.565
+Sat 03 Feb 2024 14:55:59 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:00 INFO  epoch 97 training [time: 0.46s, train loss: 21.7304]
+Sat 03 Feb 2024 14:56:00 INFO  epoch 97 evaluating [time: 0.03s, valid_score: 0.773800]
+Sat 03 Feb 2024 14:56:00 INFO  valid result: 
+auc : 0.7738    logloss : 0.5649
+Sat 03 Feb 2024 14:56:00 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:00 INFO  epoch 98 training [time: 0.41s, train loss: 21.7167]
+Sat 03 Feb 2024 14:56:00 INFO  epoch 98 evaluating [time: 0.03s, valid_score: 0.773800]
+Sat 03 Feb 2024 14:56:00 INFO  valid result: 
+auc : 0.7738    logloss : 0.5649
+Sat 03 Feb 2024 14:56:00 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:01 INFO  epoch 99 training [time: 0.40s, train loss: 21.6858]
+Sat 03 Feb 2024 14:56:01 INFO  epoch 99 evaluating [time: 0.05s, valid_score: 0.773800]
+Sat 03 Feb 2024 14:56:01 INFO  valid result: 
+auc : 0.7738    logloss : 0.5649
+Sat 03 Feb 2024 14:56:01 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:01 INFO  epoch 100 training [time: 0.41s, train loss: 21.7184]
+Sat 03 Feb 2024 14:56:01 INFO  epoch 100 evaluating [time: 0.05s, valid_score: 0.773900]
+Sat 03 Feb 2024 14:56:01 INFO  valid result: 
+auc : 0.7739    logloss : 0.5648
+Sat 03 Feb 2024 14:56:01 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:02 INFO  epoch 101 training [time: 0.43s, train loss: 21.6692]
+Sat 03 Feb 2024 14:56:02 INFO  epoch 101 evaluating [time: 0.03s, valid_score: 0.773900]
+Sat 03 Feb 2024 14:56:02 INFO  valid result: 
+auc : 0.7739    logloss : 0.5648
+Sat 03 Feb 2024 14:56:02 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:02 INFO  epoch 102 training [time: 0.41s, train loss: 21.6752]
+Sat 03 Feb 2024 14:56:02 INFO  epoch 102 evaluating [time: 0.04s, valid_score: 0.773900]
+Sat 03 Feb 2024 14:56:02 INFO  valid result: 
+auc : 0.7739    logloss : 0.5648
+Sat 03 Feb 2024 14:56:02 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:03 INFO  epoch 103 training [time: 0.39s, train loss: 21.6212]
+Sat 03 Feb 2024 14:56:03 INFO  epoch 103 evaluating [time: 0.03s, valid_score: 0.773900]
+Sat 03 Feb 2024 14:56:03 INFO  valid result: 
+auc : 0.7739    logloss : 0.5647
+Sat 03 Feb 2024 14:56:03 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:03 INFO  epoch 104 training [time: 0.41s, train loss: 21.6746]
+Sat 03 Feb 2024 14:56:03 INFO  epoch 104 evaluating [time: 0.03s, valid_score: 0.773900]
+Sat 03 Feb 2024 14:56:03 INFO  valid result: 
+auc : 0.7739    logloss : 0.5647
+Sat 03 Feb 2024 14:56:03 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:04 INFO  epoch 105 training [time: 0.41s, train loss: 21.6966]
+Sat 03 Feb 2024 14:56:04 INFO  epoch 105 evaluating [time: 0.02s, valid_score: 0.774000]
+Sat 03 Feb 2024 14:56:04 INFO  valid result: 
+auc : 0.774    logloss : 0.5647
+Sat 03 Feb 2024 14:56:04 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:04 INFO  epoch 106 training [time: 0.43s, train loss: 21.6201]
+Sat 03 Feb 2024 14:56:04 INFO  epoch 106 evaluating [time: 0.03s, valid_score: 0.774000]
+Sat 03 Feb 2024 14:56:04 INFO  valid result: 
+auc : 0.774    logloss : 0.5646
+Sat 03 Feb 2024 14:56:04 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:04 INFO  epoch 107 training [time: 0.41s, train loss: 21.6879]
+Sat 03 Feb 2024 14:56:05 INFO  epoch 107 evaluating [time: 0.03s, valid_score: 0.774000]
+Sat 03 Feb 2024 14:56:05 INFO  valid result: 
+auc : 0.774    logloss : 0.5646
+Sat 03 Feb 2024 14:56:05 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:05 INFO  epoch 108 training [time: 0.41s, train loss: 21.5580]
+Sat 03 Feb 2024 14:56:05 INFO  epoch 108 evaluating [time: 0.04s, valid_score: 0.774000]
+Sat 03 Feb 2024 14:56:05 INFO  valid result: 
+auc : 0.774    logloss : 0.5646
+Sat 03 Feb 2024 14:56:05 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:05 INFO  epoch 109 training [time: 0.44s, train loss: 21.7086]
+Sat 03 Feb 2024 14:56:05 INFO  epoch 109 evaluating [time: 0.03s, valid_score: 0.774000]
+Sat 03 Feb 2024 14:56:05 INFO  valid result: 
+auc : 0.774    logloss : 0.5646
+Sat 03 Feb 2024 14:56:05 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:06 INFO  epoch 110 training [time: 0.43s, train loss: 21.6566]
+Sat 03 Feb 2024 14:56:06 INFO  epoch 110 evaluating [time: 0.03s, valid_score: 0.774000]
+Sat 03 Feb 2024 14:56:06 INFO  valid result: 
+auc : 0.774    logloss : 0.5646
+Sat 03 Feb 2024 14:56:06 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:06 INFO  epoch 111 training [time: 0.40s, train loss: 21.6044]
+Sat 03 Feb 2024 14:56:06 INFO  epoch 111 evaluating [time: 0.03s, valid_score: 0.774100]
+Sat 03 Feb 2024 14:56:06 INFO  valid result: 
+auc : 0.7741    logloss : 0.5645
+Sat 03 Feb 2024 14:56:06 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:07 INFO  epoch 112 training [time: 0.39s, train loss: 21.6236]
+Sat 03 Feb 2024 14:56:07 INFO  epoch 112 evaluating [time: 0.03s, valid_score: 0.774100]
+Sat 03 Feb 2024 14:56:07 INFO  valid result: 
+auc : 0.7741    logloss : 0.5645
+Sat 03 Feb 2024 14:56:07 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:07 INFO  epoch 113 training [time: 0.41s, train loss: 21.5929]
+Sat 03 Feb 2024 14:56:07 INFO  epoch 113 evaluating [time: 0.03s, valid_score: 0.774200]
+Sat 03 Feb 2024 14:56:07 INFO  valid result: 
+auc : 0.7742    logloss : 0.5645
+Sat 03 Feb 2024 14:56:07 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:08 INFO  epoch 114 training [time: 0.41s, train loss: 21.6801]
+Sat 03 Feb 2024 14:56:08 INFO  epoch 114 evaluating [time: 0.03s, valid_score: 0.774200]
+Sat 03 Feb 2024 14:56:08 INFO  valid result: 
+auc : 0.7742    logloss : 0.5644
+Sat 03 Feb 2024 14:56:08 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:08 INFO  epoch 115 training [time: 0.37s, train loss: 21.6089]
+Sat 03 Feb 2024 14:56:08 INFO  epoch 115 evaluating [time: 0.02s, valid_score: 0.774200]
+Sat 03 Feb 2024 14:56:08 INFO  valid result: 
+auc : 0.7742    logloss : 0.5644
+Sat 03 Feb 2024 14:56:08 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:09 INFO  epoch 116 training [time: 0.46s, train loss: 21.6050]
+Sat 03 Feb 2024 14:56:09 INFO  epoch 116 evaluating [time: 0.05s, valid_score: 0.774200]
+Sat 03 Feb 2024 14:56:09 INFO  valid result: 
+auc : 0.7742    logloss : 0.5645
+Sat 03 Feb 2024 14:56:09 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:09 INFO  epoch 117 training [time: 0.39s, train loss: 21.6610]
+Sat 03 Feb 2024 14:56:09 INFO  epoch 117 evaluating [time: 0.05s, valid_score: 0.774200]
+Sat 03 Feb 2024 14:56:09 INFO  valid result: 
+auc : 0.7742    logloss : 0.5644
+Sat 03 Feb 2024 14:56:09 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:09 INFO  epoch 118 training [time: 0.39s, train loss: 21.5677]
+Sat 03 Feb 2024 14:56:09 INFO  epoch 118 evaluating [time: 0.05s, valid_score: 0.774200]
+Sat 03 Feb 2024 14:56:09 INFO  valid result: 
+auc : 0.7742    logloss : 0.5645
+Sat 03 Feb 2024 14:56:09 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:10 INFO  epoch 119 training [time: 0.36s, train loss: 21.6195]
+Sat 03 Feb 2024 14:56:10 INFO  epoch 119 evaluating [time: 0.04s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:10 INFO  valid result: 
+auc : 0.7743    logloss : 0.5644
+Sat 03 Feb 2024 14:56:10 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:10 INFO  epoch 120 training [time: 0.41s, train loss: 21.5682]
+Sat 03 Feb 2024 14:56:10 INFO  epoch 120 evaluating [time: 0.03s, valid_score: 0.774200]
+Sat 03 Feb 2024 14:56:10 INFO  valid result: 
+auc : 0.7742    logloss : 0.5645
+Sat 03 Feb 2024 14:56:11 INFO  epoch 121 training [time: 0.44s, train loss: 21.5308]
+Sat 03 Feb 2024 14:56:11 INFO  epoch 121 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:11 INFO  valid result: 
+auc : 0.7743    logloss : 0.5645
+Sat 03 Feb 2024 14:56:11 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:11 INFO  epoch 122 training [time: 0.41s, train loss: 21.5818]
+Sat 03 Feb 2024 14:56:11 INFO  epoch 122 evaluating [time: 0.05s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:11 INFO  valid result: 
+auc : 0.7743    logloss : 0.5644
+Sat 03 Feb 2024 14:56:11 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:12 INFO  epoch 123 training [time: 0.46s, train loss: 21.5927]
+Sat 03 Feb 2024 14:56:12 INFO  epoch 123 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:12 INFO  valid result: 
+auc : 0.7743    logloss : 0.5645
+Sat 03 Feb 2024 14:56:12 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:12 INFO  epoch 124 training [time: 0.38s, train loss: 21.5540]
+Sat 03 Feb 2024 14:56:12 INFO  epoch 124 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:12 INFO  valid result: 
+auc : 0.7743    logloss : 0.5644
+Sat 03 Feb 2024 14:56:12 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:13 INFO  epoch 125 training [time: 0.45s, train loss: 21.5138]
+Sat 03 Feb 2024 14:56:13 INFO  epoch 125 evaluating [time: 0.04s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:13 INFO  valid result: 
+auc : 0.7743    logloss : 0.5645
+Sat 03 Feb 2024 14:56:13 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:13 INFO  epoch 126 training [time: 0.45s, train loss: 21.6079]
+Sat 03 Feb 2024 14:56:13 INFO  epoch 126 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:13 INFO  valid result: 
+auc : 0.7743    logloss : 0.5644
+Sat 03 Feb 2024 14:56:13 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:14 INFO  epoch 127 training [time: 0.41s, train loss: 21.5482]
+Sat 03 Feb 2024 14:56:14 INFO  epoch 127 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:14 INFO  valid result: 
+auc : 0.7743    logloss : 0.5645
+Sat 03 Feb 2024 14:56:14 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:14 INFO  epoch 128 training [time: 0.43s, train loss: 21.5334]
+Sat 03 Feb 2024 14:56:14 INFO  epoch 128 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:14 INFO  valid result: 
+auc : 0.7743    logloss : 0.5645
+Sat 03 Feb 2024 14:56:14 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:15 INFO  epoch 129 training [time: 0.43s, train loss: 21.5560]
+Sat 03 Feb 2024 14:56:15 INFO  epoch 129 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:15 INFO  valid result: 
+auc : 0.7743    logloss : 0.5645
+Sat 03 Feb 2024 14:56:15 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:15 INFO  epoch 130 training [time: 0.41s, train loss: 21.5536]
+Sat 03 Feb 2024 14:56:15 INFO  epoch 130 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:15 INFO  valid result: 
+auc : 0.7743    logloss : 0.5645
+Sat 03 Feb 2024 14:56:15 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:15 INFO  epoch 131 training [time: 0.40s, train loss: 21.5360]
+Sat 03 Feb 2024 14:56:15 INFO  epoch 131 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:15 INFO  valid result: 
+auc : 0.7744    logloss : 0.5644
+Sat 03 Feb 2024 14:56:15 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:16 INFO  epoch 132 training [time: 0.44s, train loss: 21.5986]
+Sat 03 Feb 2024 14:56:16 INFO  epoch 132 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:16 INFO  valid result: 
+auc : 0.7744    logloss : 0.5645
+Sat 03 Feb 2024 14:56:16 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:16 INFO  epoch 133 training [time: 0.39s, train loss: 21.6510]
+Sat 03 Feb 2024 14:56:16 INFO  epoch 133 evaluating [time: 0.02s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:16 INFO  valid result: 
+auc : 0.7744    logloss : 0.5645
+Sat 03 Feb 2024 14:56:16 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:17 INFO  epoch 134 training [time: 0.43s, train loss: 21.5819]
+Sat 03 Feb 2024 14:56:17 INFO  epoch 134 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:17 INFO  valid result: 
+auc : 0.7744    logloss : 0.5645
+Sat 03 Feb 2024 14:56:17 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:17 INFO  epoch 135 training [time: 0.44s, train loss: 21.5397]
+Sat 03 Feb 2024 14:56:17 INFO  epoch 135 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:17 INFO  valid result: 
+auc : 0.7744    logloss : 0.5645
+Sat 03 Feb 2024 14:56:17 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:18 INFO  epoch 136 training [time: 0.43s, train loss: 21.4862]
+Sat 03 Feb 2024 14:56:18 INFO  epoch 136 evaluating [time: 0.04s, valid_score: 0.774500]
+Sat 03 Feb 2024 14:56:18 INFO  valid result: 
+auc : 0.7745    logloss : 0.5645
+Sat 03 Feb 2024 14:56:18 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:18 INFO  epoch 137 training [time: 0.38s, train loss: 21.4937]
+Sat 03 Feb 2024 14:56:18 INFO  epoch 137 evaluating [time: 0.06s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:18 INFO  valid result: 
+auc : 0.7744    logloss : 0.5645
+Sat 03 Feb 2024 14:56:19 INFO  epoch 138 training [time: 0.54s, train loss: 21.5748]
+Sat 03 Feb 2024 14:56:19 INFO  epoch 138 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:19 INFO  valid result: 
+auc : 0.7744    logloss : 0.5645
+Sat 03 Feb 2024 14:56:19 INFO  epoch 139 training [time: 0.52s, train loss: 21.4884]
+Sat 03 Feb 2024 14:56:19 INFO  epoch 139 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:19 INFO  valid result: 
+auc : 0.7744    logloss : 0.5645
+Sat 03 Feb 2024 14:56:20 INFO  epoch 140 training [time: 0.39s, train loss: 21.5389]
+Sat 03 Feb 2024 14:56:20 INFO  epoch 140 evaluating [time: 0.03s, valid_score: 0.774500]
+Sat 03 Feb 2024 14:56:20 INFO  valid result: 
+auc : 0.7745    logloss : 0.5645
+Sat 03 Feb 2024 14:56:20 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:20 INFO  epoch 141 training [time: 0.41s, train loss: 21.4699]
+Sat 03 Feb 2024 14:56:20 INFO  epoch 141 evaluating [time: 0.03s, valid_score: 0.774500]
+Sat 03 Feb 2024 14:56:20 INFO  valid result: 
+auc : 0.7745    logloss : 0.5646
+Sat 03 Feb 2024 14:56:20 INFO  Saving current: saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:21 INFO  epoch 142 training [time: 0.36s, train loss: 21.5087]
+Sat 03 Feb 2024 14:56:21 INFO  epoch 142 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:21 INFO  valid result: 
+auc : 0.7744    logloss : 0.5647
+Sat 03 Feb 2024 14:56:21 INFO  epoch 143 training [time: 0.39s, train loss: 21.5316]
+Sat 03 Feb 2024 14:56:21 INFO  epoch 143 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:21 INFO  valid result: 
+auc : 0.7744    logloss : 0.5647
+Sat 03 Feb 2024 14:56:21 INFO  epoch 144 training [time: 0.38s, train loss: 21.5779]
+Sat 03 Feb 2024 14:56:21 INFO  epoch 144 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:21 INFO  valid result: 
+auc : 0.7744    logloss : 0.5647
+Sat 03 Feb 2024 14:56:22 INFO  epoch 145 training [time: 0.41s, train loss: 21.5529]
+Sat 03 Feb 2024 14:56:22 INFO  epoch 145 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:22 INFO  valid result: 
+auc : 0.7743    logloss : 0.5647
+Sat 03 Feb 2024 14:56:22 INFO  epoch 146 training [time: 0.44s, train loss: 21.5536]
+Sat 03 Feb 2024 14:56:22 INFO  epoch 146 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:22 INFO  valid result: 
+auc : 0.7743    logloss : 0.5648
+Sat 03 Feb 2024 14:56:23 INFO  epoch 147 training [time: 0.43s, train loss: 21.5279]
+Sat 03 Feb 2024 14:56:23 INFO  epoch 147 evaluating [time: 0.03s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:23 INFO  valid result: 
+auc : 0.7743    logloss : 0.5648
+Sat 03 Feb 2024 14:56:23 INFO  epoch 148 training [time: 0.41s, train loss: 21.5036]
+Sat 03 Feb 2024 14:56:23 INFO  epoch 148 evaluating [time: 0.02s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:23 INFO  valid result: 
+auc : 0.7743    logloss : 0.5648
+Sat 03 Feb 2024 14:56:24 INFO  epoch 149 training [time: 0.41s, train loss: 21.4505]
+Sat 03 Feb 2024 14:56:24 INFO  epoch 149 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:24 INFO  valid result: 
+auc : 0.7744    logloss : 0.5648
+Sat 03 Feb 2024 14:56:24 INFO  epoch 150 training [time: 0.36s, train loss: 21.4679]
+Sat 03 Feb 2024 14:56:24 INFO  epoch 150 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:24 INFO  valid result: 
+auc : 0.7744    logloss : 0.5649
+Sat 03 Feb 2024 14:56:24 INFO  epoch 151 training [time: 0.40s, train loss: 21.5211]
+Sat 03 Feb 2024 14:56:24 INFO  epoch 151 evaluating [time: 0.03s, valid_score: 0.774400]
+Sat 03 Feb 2024 14:56:24 INFO  valid result: 
+auc : 0.7744    logloss : 0.5649
+Sat 03 Feb 2024 14:56:25 INFO  epoch 152 training [time: 0.41s, train loss: 21.4896]
+Sat 03 Feb 2024 14:56:25 INFO  epoch 152 evaluating [time: 0.02s, valid_score: 0.774300]
+Sat 03 Feb 2024 14:56:25 INFO  valid result: 
+auc : 0.7743    logloss : 0.565
+Sat 03 Feb 2024 14:56:25 INFO  Finished training, best eval result in epoch 141
+Sat 03 Feb 2024 14:56:25 INFO  Loading model structure and parameters from saved\LR-Feb-03-2024_14-55-13.pth
+Sat 03 Feb 2024 14:56:26 INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    4.40 %     |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.33 G/7.85 G |
++-------------+---------------+
+Sat 03 Feb 2024 14:56:26 INFO  best valid : OrderedDict([('auc', 0.7745), ('logloss', 0.5646)])
+Sat 03 Feb 2024 14:56:26 INFO  test result: OrderedDict([('auc', 0.7764), ('logloss', 0.5617)])

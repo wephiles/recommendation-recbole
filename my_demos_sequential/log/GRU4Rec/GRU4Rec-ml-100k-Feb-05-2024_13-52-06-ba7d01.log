@@ -1,0 +1,8 @@
+Mon 05 Feb 2024 13:52:11 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Mon 05 Feb 2024 13:52:11 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 05 Feb 2024 14:39:54 INFO  Loading model structure and parameters from saved\GRU4Rec-Feb-05-2024_13-52-11.pth
+Mon 05 Feb 2024 14:39:54 ERROR  job exception: `tune.report` is deprecated.
+Use `ray.train.report` instead -- see the example below:
+
+from ray import tune     ->     from ray import train
+tune.report(metric=1)    ->     train.report({'metric': 1})

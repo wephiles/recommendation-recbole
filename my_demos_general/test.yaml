@@ -1,0 +1,48 @@
+# model config
+
+embedding_size: 32
+
+############################## 数据集参数 以ml-1m为例 ##############################
+field_separator: "\t"  # 指定数据集field的分隔符
+seq_separator: " "  # 指定数据集中  token_seq或者float_seq的分隔符
+USER_ID_FIELD: user_id  # 指定用户ID域
+ITEM_ID_FIELD: item_id  # 指定物品ID域
+RATING_FIELD: rating  # 指定评分rating域
+TIME_FIELD: timestamp  # 指定时间戳time域
+NEG_PREFIX: neg_  # 指定负采样前缀
+load_col:
+  # 指定从什么文件里读什么列，这里就是从ml-1m.inter里面读取user_id, item_id, rating, timestamp这四列
+  inter: [user_id, item_id, rating, timestamp]
+
+##################################### 训练参数 #####################################
+# 注意，因为General类模型不需要标签，全靠负采样得到负例，因此training_neg_sample_num一定不能是0
+
+epochs: 500  # 指定训练的最大轮数
+train_batch_size: 4096  # 指定训练时的批大小——在机器学习/深度学习中，指每次迭代训练时所使用的样本数量。
+learner: adam  # 指定优化器 使用的pytorch内置优化器
+learning_rate: 0.001  # 指定学习率
+training_neg_sample_num: 1  # 指定训练时的负采样数
+# training_neg_sample_num参数在推荐系统中的作用是指定训练时的负采样数量。
+# 在推荐系统中，负采样是一种常用的技术，用于处理正负样本不平衡的问题。
+# 在推荐系统中，用户与他们喜欢（或与他们互动）的项目之间的交互被视为正样本，
+# 而用户与他们不喜欢（或没有与他们互动）的项目之间的交互被视为负样本。
+# 然而，负样本的数量通常远远超过正样本的数量，这会导致模型训练的不平衡。
+# 负采样技术的引入就是为了解决这个问题。它的基本思想是从大量的负样本中
+# 随机选择一部分用于训练。
+# training_neg_sample_num参数就是用来指定
+# 这个随机选择的负样本的数量。例如，如果training_neg_sample_num设置为1，
+# 那么对于每一个正样本，我们就会随机选择一个负样本用于训练
+eval_step: 1  # 指定多少个epoch进行一次验证 每次训练后做 evaluation 的次数
+stopping_step: 10  # 指定多少个epoch没有提升就停止训练
+
+##################################### 设置评测参数 #####################################
+
+eval_setting: RO_RS,full  # 指定评测的方式 对数据随机重排，设置按比例划分数据集，且使用全排序
+group_by_user: True  # 指定评测时是否按用户分组 是否将一个user的记录划到一个组里，当eval_setting使用RO_RS的时候该项必须是True
+split_ratio:
+  [0.8, 0.1, 0.1]
+metrics: ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']  # 指定评测指标
+topk: [10]
+# 指定评测时的topk 评测标准使用topk，设置成10评测标准就是["Recall@10", "MRR@10", "NDCG@10", "Hit@10", "Precision@10"]
+valid_metric: MRR@10  # 指定验证时的评测指标  用于early stopping 选取哪个评测标准作为作为提前停止训练的标准
+eval_batch_size: 4096  # 指定评测时的批大小

@@ -2,7 +2,7 @@
 # @CreateTime : 2024/1/19 019 15:14
 # @Author : 瑾瑜@20866
 # @IDE : PyCharm
-# @File : recommendationAlgorithms/run.py
+# @File : recommendationAlgorithms/run_recbole.py
 # @Description : run.py文件，用于结合自定义模型、自定义DataLoader、 自定义训练器、自定义采样器、自定义指标
 # @Interpreter : python 3.10
 # @Motto : You must take your place in the circle of life!

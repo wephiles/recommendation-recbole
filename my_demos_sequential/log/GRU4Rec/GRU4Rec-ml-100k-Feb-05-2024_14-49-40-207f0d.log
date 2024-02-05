@@ -1,0 +1,3 @@
+Mon 05 Feb 2024 14:49:45 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Mon 05 Feb 2024 14:49:45 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Mon 05 Feb 2024 15:38:28 INFO  Loading model structure and parameters from saved\GRU4Rec-Feb-05-2024_14-49-45.pth

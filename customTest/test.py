@@ -12,6 +12,33 @@ import requests
 from bs4 import BeautifulSoup
 
 
+def main() -> int:
+    # dict_ = {
+    #     "name": "computer",
+    #     "age": "100",
+    #     "type list": ["mobile phone", "personal computer", "desktop computer"]
+    # }
+    # import pickle
+    # import pprint
+    # with open("hello.pkl", "wb") as fp:
+    #     pickle.dump(dict_, fp)
+
+    # with open("hello.pkl", "rb") as fp:
+    #     data = pickle.load(fp)
+    #     pprint.pprint(data)
+
+    # from collections import defaultdict
+    # d = defaultdict(int)
+    # print(d['key'])
+    # d['key'] += 1
+    # print(d['key'])
+    # set_ = (12, 30, )
+    # print(dict_.setdefault("goods", set_))
+    # print(dict_)
+
+    return 0
+
+
 def get_movie_names():
     url = "https://movie.douban.com/top250"
     headers = {
@@ -23,10 +50,11 @@ def get_movie_names():
     movie_list = soup.find_all('div', class_='hd')
     for movie in movie_list:
         movie_name = movie.find('span', class_='title').text
-        print(movie_name)
+        print(movie_name, )
 
 
 if __name__ == "__main__":
-    get_movie_names()
+    # get_movie_names()
+    main()
 
 # END
