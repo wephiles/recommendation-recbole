@@ -1,0 +1,10 @@
+ui_embedding_size: 32
+neigh_embedding_size: 32
+num_conv_kernel: 64
+conv_kernel_size: 5
+pool_kernel_size: 5
+number of layers: [128,64,32,16]
+neigh_num: 20
+dropout: 0.5
+neigh_info_method: "knn"
+resolution: 1.0

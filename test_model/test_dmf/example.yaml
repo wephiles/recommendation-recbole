@@ -1,0 +1,5 @@
+user_embedding_size: 64  # The initial embedding size of users. Defaults to .64
+item_embedding_size: 64  # The initial embedding size of items. Defaults to .64
+user_hidden_size_list: [64,64]  # The hidden size of each layer in MLP for users, the length of list is equal to the number of layers. Defaults to .[64,64]
+item_hidden_size_list: [64,64]  # The hidden size of each layer in MLP for items, the length of list is equal to the number of layers. Defaults to .[64,64]
+inter_matrix_type: '01'  # ['01', 'rating']:  # Use the implicit interaction matrix or the rating matrix. Defaults to . Range in .'01'['01', 'rating']

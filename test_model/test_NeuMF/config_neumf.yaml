@@ -1,0 +1,9 @@
+mf_embedding_size: 64  # The MF embedding size of user and item. Defaults to .64
+mlp_embedding_size: 64  # The MLP embedding size of user and item. Defaults to .64
+mlp_hidden_size: [128, 64]  # The hidden size of each layer in MLP, the length of list is equal to the number of layers. Defaults to .[128,64]
+dropout_prob: 0.1  # The dropout rate in MLP layers. Defaults to .0.1
+mf_train: True  # Whether to train the MF part of the model. Defaults to .True
+mlp_train: True  # Whether to train the MLP part of the model. Defaults to .True
+use_pretrain: True  # Whether to use the pre-trained parameters for MF and MLP part. Defaults to .False
+mf_pretrain_path: '.use_pretrain'  # The path of pre-trained MF part model. If is set to False, it will be ignored. Defaults to .use_pretrainNone
+mlp_pretrain_path: '.use_pretrain'  # The path of pre-trained MLP part model. If is set to False, it will be ignored. Defaults to .use_pretrainNone
