@@ -1,0 +1,378 @@
+Fri 01 Mar 2024 15:37:04 INFO  ['run.py']
+Fri 01 Mar 2024 15:37:04 INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = D:\PythonCompiler\python310\Lib\site-packages\recbole\config\../dataset_example/ml-100k
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': None, 'mode': {'valid': 'labeled', 'test': 'labeled'}}
+repeatable = False
+metrics = ['AUC', 'LogLoss']
+topk = [10]
+valid_metric = AUC
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = {'rating': 4}
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp'], 'user': ['user_id', 'age', 'gender', 'occupation'], 'item': ['item_id', 'release_year', 'class']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+embedding_size = 10
+mlp_hidden_size = [256, 256, 256]
+cross_layer_num = 6
+reg_weight = 2
+dropout_prob = 0.2
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.CONTEXT
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.VALUE
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'none', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'none', 'sample_num': 'none'}
+
+
+Fri 01 Mar 2024 15:37:06 INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'timestamp', 'age', 'gender', 'occupation', 'release_year', 'class', 'label']
+Fri 01 Mar 2024 15:37:08 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Fri 01 Mar 2024 15:37:08 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': None, 'mode': {'valid': 'labeled', 'test': 'labeled'}}]
+Fri 01 Mar 2024 15:37:09 INFO  DCN(
+  (token_embedding_table): FMEmbedding(
+    (embedding): Embedding(2788, 10)
+  )
+  (token_seq_embedding_table): ModuleList(
+    (0): Embedding(20, 10)
+  )
+  (first_order_linear): FMFirstOrderLinear(
+    (token_embedding_table): FMEmbedding(
+      (embedding): Embedding(2788, 1)
+    )
+    (token_seq_embedding_table): ModuleList(
+      (0): Embedding(20, 1)
+    )
+  )
+  (cross_layer_w): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 70]
+      (1): Parameter containing: [torch.float32 of size 70]
+      (2): Parameter containing: [torch.float32 of size 70]
+      (3): Parameter containing: [torch.float32 of size 70]
+      (4): Parameter containing: [torch.float32 of size 70]
+      (5): Parameter containing: [torch.float32 of size 70]
+  )
+  (cross_layer_b): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 70]
+      (1): Parameter containing: [torch.float32 of size 70]
+      (2): Parameter containing: [torch.float32 of size 70]
+      (3): Parameter containing: [torch.float32 of size 70]
+      (4): Parameter containing: [torch.float32 of size 70]
+      (5): Parameter containing: [torch.float32 of size 70]
+  )
+  (mlp_layers): MLPLayers(
+    (mlp_layers): Sequential(
+      (0): Dropout(p=0.2, inplace=False)
+      (1): Linear(in_features=70, out_features=256, bias=True)
+      (2): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (3): ReLU()
+      (4): Dropout(p=0.2, inplace=False)
+      (5): Linear(in_features=256, out_features=256, bias=True)
+      (6): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (7): ReLU()
+      (8): Dropout(p=0.2, inplace=False)
+      (9): Linear(in_features=256, out_features=256, bias=True)
+      (10): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (11): ReLU()
+    )
+  )
+  (predict_layer): Linear(in_features=326, out_features=1, bias=True)
+  (reg_loss): RegLoss()
+  (sigmoid): Sigmoid()
+  (loss): BCEWithLogitsLoss()
+)
+Trainable parameters: 183352
+Fri 01 Mar 2024 15:37:16 INFO  FLOPs: 152510.0
+Fri 01 Mar 2024 15:37:24 INFO  epoch 0 training [time: 4.03s, train loss: 4057.4696]
+Fri 01 Mar 2024 15:37:25 INFO  epoch 0 evaluating [time: 0.23s, valid_score: 0.652900]
+Fri 01 Mar 2024 15:37:25 INFO  valid result: 
+auc : 0.6529    logloss : 0.6656
+Fri 01 Mar 2024 15:37:25 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:27 INFO  epoch 1 training [time: 2.33s, train loss: 3930.5315]
+Fri 01 Mar 2024 15:37:27 INFO  epoch 1 evaluating [time: 0.11s, valid_score: 0.745700]
+Fri 01 Mar 2024 15:37:27 INFO  valid result: 
+auc : 0.7457    logloss : 0.5894
+Fri 01 Mar 2024 15:37:27 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:30 INFO  epoch 2 training [time: 2.48s, train loss: 3807.0252]
+Fri 01 Mar 2024 15:37:30 INFO  epoch 2 evaluating [time: 0.10s, valid_score: 0.767100]
+Fri 01 Mar 2024 15:37:30 INFO  valid result: 
+auc : 0.7671    logloss : 0.5717
+Fri 01 Mar 2024 15:37:30 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:32 INFO  epoch 3 training [time: 2.02s, train loss: 3687.4076]
+Fri 01 Mar 2024 15:37:32 INFO  epoch 3 evaluating [time: 0.07s, valid_score: 0.771700]
+Fri 01 Mar 2024 15:37:32 INFO  valid result: 
+auc : 0.7717    logloss : 0.5685
+Fri 01 Mar 2024 15:37:32 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:34 INFO  epoch 4 training [time: 2.01s, train loss: 3570.7335]
+Fri 01 Mar 2024 15:37:34 INFO  epoch 4 evaluating [time: 0.08s, valid_score: 0.774900]
+Fri 01 Mar 2024 15:37:34 INFO  valid result: 
+auc : 0.7749    logloss : 0.5665
+Fri 01 Mar 2024 15:37:34 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:36 INFO  epoch 5 training [time: 2.01s, train loss: 3456.6932]
+Fri 01 Mar 2024 15:37:36 INFO  epoch 5 evaluating [time: 0.07s, valid_score: 0.776300]
+Fri 01 Mar 2024 15:37:36 INFO  valid result: 
+auc : 0.7763    logloss : 0.5634
+Fri 01 Mar 2024 15:37:36 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:38 INFO  epoch 6 training [time: 2.03s, train loss: 3344.9083]
+Fri 01 Mar 2024 15:37:39 INFO  epoch 6 evaluating [time: 0.07s, valid_score: 0.776600]
+Fri 01 Mar 2024 15:37:39 INFO  valid result: 
+auc : 0.7766    logloss : 0.5652
+Fri 01 Mar 2024 15:37:39 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:41 INFO  epoch 7 training [time: 2.00s, train loss: 3235.3911]
+Fri 01 Mar 2024 15:37:41 INFO  epoch 7 evaluating [time: 0.08s, valid_score: 0.776900]
+Fri 01 Mar 2024 15:37:41 INFO  valid result: 
+auc : 0.7769    logloss : 0.5657
+Fri 01 Mar 2024 15:37:41 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:43 INFO  epoch 8 training [time: 2.00s, train loss: 3128.0033]
+Fri 01 Mar 2024 15:37:43 INFO  epoch 8 evaluating [time: 0.07s, valid_score: 0.779600]
+Fri 01 Mar 2024 15:37:43 INFO  valid result: 
+auc : 0.7796    logloss : 0.5617
+Fri 01 Mar 2024 15:37:43 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:45 INFO  epoch 9 training [time: 1.98s, train loss: 3022.7525]
+Fri 01 Mar 2024 15:37:45 INFO  epoch 9 evaluating [time: 0.07s, valid_score: 0.780800]
+Fri 01 Mar 2024 15:37:45 INFO  valid result: 
+auc : 0.7808    logloss : 0.5615
+Fri 01 Mar 2024 15:37:45 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:47 INFO  epoch 10 training [time: 1.96s, train loss: 2919.3556]
+Fri 01 Mar 2024 15:37:47 INFO  epoch 10 evaluating [time: 0.07s, valid_score: 0.781600]
+Fri 01 Mar 2024 15:37:47 INFO  valid result: 
+auc : 0.7816    logloss : 0.5592
+Fri 01 Mar 2024 15:37:47 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:49 INFO  epoch 11 training [time: 2.02s, train loss: 2817.9721]
+Fri 01 Mar 2024 15:37:49 INFO  epoch 11 evaluating [time: 0.08s, valid_score: 0.782600]
+Fri 01 Mar 2024 15:37:49 INFO  valid result: 
+auc : 0.7826    logloss : 0.5616
+Fri 01 Mar 2024 15:37:49 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:51 INFO  epoch 12 training [time: 1.99s, train loss: 2718.3244]
+Fri 01 Mar 2024 15:37:51 INFO  epoch 12 evaluating [time: 0.08s, valid_score: 0.784600]
+Fri 01 Mar 2024 15:37:51 INFO  valid result: 
+auc : 0.7846    logloss : 0.5563
+Fri 01 Mar 2024 15:37:51 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:53 INFO  epoch 13 training [time: 2.01s, train loss: 2620.6153]
+Fri 01 Mar 2024 15:37:53 INFO  epoch 13 evaluating [time: 0.07s, valid_score: 0.785700]
+Fri 01 Mar 2024 15:37:53 INFO  valid result: 
+auc : 0.7857    logloss : 0.5559
+Fri 01 Mar 2024 15:37:53 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:55 INFO  epoch 14 training [time: 1.96s, train loss: 2524.6337]
+Fri 01 Mar 2024 15:37:55 INFO  epoch 14 evaluating [time: 0.09s, valid_score: 0.786400]
+Fri 01 Mar 2024 15:37:55 INFO  valid result: 
+auc : 0.7864    logloss : 0.5554
+Fri 01 Mar 2024 15:37:55 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:57 INFO  epoch 15 training [time: 2.00s, train loss: 2430.4372]
+Fri 01 Mar 2024 15:37:57 INFO  epoch 15 evaluating [time: 0.08s, valid_score: 0.787200]
+Fri 01 Mar 2024 15:37:57 INFO  valid result: 
+auc : 0.7872    logloss : 0.5577
+Fri 01 Mar 2024 15:37:57 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:37:59 INFO  epoch 16 training [time: 1.99s, train loss: 2337.9160]
+Fri 01 Mar 2024 15:37:59 INFO  epoch 16 evaluating [time: 0.08s, valid_score: 0.787400]
+Fri 01 Mar 2024 15:37:59 INFO  valid result: 
+auc : 0.7874    logloss : 0.5556
+Fri 01 Mar 2024 15:37:59 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:01 INFO  epoch 17 training [time: 1.95s, train loss: 2247.1031]
+Fri 01 Mar 2024 15:38:01 INFO  epoch 17 evaluating [time: 0.09s, valid_score: 0.787800]
+Fri 01 Mar 2024 15:38:01 INFO  valid result: 
+auc : 0.7878    logloss : 0.5571
+Fri 01 Mar 2024 15:38:02 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:03 INFO  epoch 18 training [time: 1.92s, train loss: 2157.9691]
+Fri 01 Mar 2024 15:38:04 INFO  epoch 18 evaluating [time: 0.09s, valid_score: 0.788000]
+Fri 01 Mar 2024 15:38:04 INFO  valid result: 
+auc : 0.788    logloss : 0.5555
+Fri 01 Mar 2024 15:38:04 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:06 INFO  epoch 19 training [time: 1.96s, train loss: 2070.4773]
+Fri 01 Mar 2024 15:38:06 INFO  epoch 19 evaluating [time: 0.09s, valid_score: 0.789700]
+Fri 01 Mar 2024 15:38:06 INFO  valid result: 
+auc : 0.7897    logloss : 0.5563
+Fri 01 Mar 2024 15:38:06 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:08 INFO  epoch 20 training [time: 1.95s, train loss: 1984.7062]
+Fri 01 Mar 2024 15:38:08 INFO  epoch 20 evaluating [time: 0.09s, valid_score: 0.790500]
+Fri 01 Mar 2024 15:38:08 INFO  valid result: 
+auc : 0.7905    logloss : 0.5557
+Fri 01 Mar 2024 15:38:08 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:10 INFO  epoch 21 training [time: 2.00s, train loss: 1900.5845]
+Fri 01 Mar 2024 15:38:10 INFO  epoch 21 evaluating [time: 0.08s, valid_score: 0.789300]
+Fri 01 Mar 2024 15:38:10 INFO  valid result: 
+auc : 0.7893    logloss : 0.5591
+Fri 01 Mar 2024 15:38:12 INFO  epoch 22 training [time: 1.94s, train loss: 1818.1377]
+Fri 01 Mar 2024 15:38:12 INFO  epoch 22 evaluating [time: 0.09s, valid_score: 0.788700]
+Fri 01 Mar 2024 15:38:12 INFO  valid result: 
+auc : 0.7887    logloss : 0.5581
+Fri 01 Mar 2024 15:38:14 INFO  epoch 23 training [time: 1.95s, train loss: 1737.1789]
+Fri 01 Mar 2024 15:38:14 INFO  epoch 23 evaluating [time: 0.09s, valid_score: 0.790300]
+Fri 01 Mar 2024 15:38:14 INFO  valid result: 
+auc : 0.7903    logloss : 0.5575
+Fri 01 Mar 2024 15:38:16 INFO  epoch 24 training [time: 2.01s, train loss: 1658.0199]
+Fri 01 Mar 2024 15:38:16 INFO  epoch 24 evaluating [time: 0.09s, valid_score: 0.790700]
+Fri 01 Mar 2024 15:38:16 INFO  valid result: 
+auc : 0.7907    logloss : 0.5598
+Fri 01 Mar 2024 15:38:16 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:18 INFO  epoch 25 training [time: 2.08s, train loss: 1580.5743]
+Fri 01 Mar 2024 15:38:18 INFO  epoch 25 evaluating [time: 0.09s, valid_score: 0.789800]
+Fri 01 Mar 2024 15:38:18 INFO  valid result: 
+auc : 0.7898    logloss : 0.5578
+Fri 01 Mar 2024 15:38:20 INFO  epoch 26 training [time: 1.96s, train loss: 1504.8065]
+Fri 01 Mar 2024 15:38:20 INFO  epoch 26 evaluating [time: 0.08s, valid_score: 0.790500]
+Fri 01 Mar 2024 15:38:20 INFO  valid result: 
+auc : 0.7905    logloss : 0.561
+Fri 01 Mar 2024 15:38:22 INFO  epoch 27 training [time: 2.03s, train loss: 1430.6067]
+Fri 01 Mar 2024 15:38:22 INFO  epoch 27 evaluating [time: 0.08s, valid_score: 0.789800]
+Fri 01 Mar 2024 15:38:22 INFO  valid result: 
+auc : 0.7898    logloss : 0.5605
+Fri 01 Mar 2024 15:38:24 INFO  epoch 28 training [time: 1.94s, train loss: 1358.2714]
+Fri 01 Mar 2024 15:38:24 INFO  epoch 28 evaluating [time: 0.09s, valid_score: 0.790200]
+Fri 01 Mar 2024 15:38:24 INFO  valid result: 
+auc : 0.7902    logloss : 0.5596
+Fri 01 Mar 2024 15:38:26 INFO  epoch 29 training [time: 1.95s, train loss: 1287.4655]
+Fri 01 Mar 2024 15:38:26 INFO  epoch 29 evaluating [time: 0.09s, valid_score: 0.789900]
+Fri 01 Mar 2024 15:38:26 INFO  valid result: 
+auc : 0.7899    logloss : 0.5605
+Fri 01 Mar 2024 15:38:28 INFO  epoch 30 training [time: 1.99s, train loss: 1218.5159]
+Fri 01 Mar 2024 15:38:28 INFO  epoch 30 evaluating [time: 0.09s, valid_score: 0.790700]
+Fri 01 Mar 2024 15:38:28 INFO  valid result: 
+auc : 0.7907    logloss : 0.5606
+Fri 01 Mar 2024 15:38:28 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:30 INFO  epoch 31 training [time: 1.96s, train loss: 1151.3386]
+Fri 01 Mar 2024 15:38:31 INFO  epoch 31 evaluating [time: 0.08s, valid_score: 0.791700]
+Fri 01 Mar 2024 15:38:31 INFO  valid result: 
+auc : 0.7917    logloss : 0.5628
+Fri 01 Mar 2024 15:38:31 INFO  Saving current: saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:33 INFO  epoch 32 training [time: 1.98s, train loss: 1085.9010]
+Fri 01 Mar 2024 15:38:33 INFO  epoch 32 evaluating [time: 0.09s, valid_score: 0.789700]
+Fri 01 Mar 2024 15:38:33 INFO  valid result: 
+auc : 0.7897    logloss : 0.563
+Fri 01 Mar 2024 15:38:35 INFO  epoch 33 training [time: 1.99s, train loss: 1022.1619]
+Fri 01 Mar 2024 15:38:35 INFO  epoch 33 evaluating [time: 0.07s, valid_score: 0.789900]
+Fri 01 Mar 2024 15:38:35 INFO  valid result: 
+auc : 0.7899    logloss : 0.5614
+Fri 01 Mar 2024 15:38:37 INFO  epoch 34 training [time: 2.01s, train loss: 960.1882]
+Fri 01 Mar 2024 15:38:37 INFO  epoch 34 evaluating [time: 0.08s, valid_score: 0.790700]
+Fri 01 Mar 2024 15:38:37 INFO  valid result: 
+auc : 0.7907    logloss : 0.564
+Fri 01 Mar 2024 15:38:39 INFO  epoch 35 training [time: 1.92s, train loss: 900.0243]
+Fri 01 Mar 2024 15:38:39 INFO  epoch 35 evaluating [time: 0.09s, valid_score: 0.790800]
+Fri 01 Mar 2024 15:38:39 INFO  valid result: 
+auc : 0.7908    logloss : 0.5647
+Fri 01 Mar 2024 15:38:41 INFO  epoch 36 training [time: 2.01s, train loss: 841.5582]
+Fri 01 Mar 2024 15:38:41 INFO  epoch 36 evaluating [time: 0.07s, valid_score: 0.789300]
+Fri 01 Mar 2024 15:38:41 INFO  valid result: 
+auc : 0.7893    logloss : 0.564
+Fri 01 Mar 2024 15:38:43 INFO  epoch 37 training [time: 1.96s, train loss: 784.9906]
+Fri 01 Mar 2024 15:38:43 INFO  epoch 37 evaluating [time: 0.08s, valid_score: 0.789900]
+Fri 01 Mar 2024 15:38:43 INFO  valid result: 
+auc : 0.7899    logloss : 0.5651
+Fri 01 Mar 2024 15:38:45 INFO  epoch 38 training [time: 1.96s, train loss: 730.2861]
+Fri 01 Mar 2024 15:38:45 INFO  epoch 38 evaluating [time: 0.08s, valid_score: 0.789200]
+Fri 01 Mar 2024 15:38:45 INFO  valid result: 
+auc : 0.7892    logloss : 0.5678
+Fri 01 Mar 2024 15:38:47 INFO  epoch 39 training [time: 1.95s, train loss: 677.2401]
+Fri 01 Mar 2024 15:38:47 INFO  epoch 39 evaluating [time: 0.08s, valid_score: 0.789600]
+Fri 01 Mar 2024 15:38:47 INFO  valid result: 
+auc : 0.7896    logloss : 0.5664
+Fri 01 Mar 2024 15:38:49 INFO  epoch 40 training [time: 1.98s, train loss: 626.1638]
+Fri 01 Mar 2024 15:38:49 INFO  epoch 40 evaluating [time: 0.09s, valid_score: 0.790000]
+Fri 01 Mar 2024 15:38:49 INFO  valid result: 
+auc : 0.79    logloss : 0.5681
+Fri 01 Mar 2024 15:38:51 INFO  epoch 41 training [time: 1.96s, train loss: 576.6231]
+Fri 01 Mar 2024 15:38:51 INFO  epoch 41 evaluating [time: 0.09s, valid_score: 0.790300]
+Fri 01 Mar 2024 15:38:51 INFO  valid result: 
+auc : 0.7903    logloss : 0.5703
+Fri 01 Mar 2024 15:38:53 INFO  epoch 42 training [time: 1.97s, train loss: 529.0624]
+Fri 01 Mar 2024 15:38:53 INFO  epoch 42 evaluating [time: 0.09s, valid_score: 0.789900]
+Fri 01 Mar 2024 15:38:53 INFO  valid result: 
+auc : 0.7899    logloss : 0.5671
+Fri 01 Mar 2024 15:38:53 INFO  Finished training, best eval result in epoch 31
+Fri 01 Mar 2024 15:38:53 INFO  Loading model structure and parameters from saved\DCN-Mar-01-2024_15-37-16.pth
+Fri 01 Mar 2024 15:38:54 INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    4.60 %     |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.29 G/7.85 G |
++-------------+---------------+
+Fri 01 Mar 2024 15:38:55 INFO  best valid : OrderedDict([('auc', 0.7917), ('logloss', 0.5628)])
+Fri 01 Mar 2024 15:38:55 INFO  test result: OrderedDict([('auc', 0.7891), ('logloss', 0.5649)])
